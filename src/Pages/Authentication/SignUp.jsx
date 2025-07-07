@@ -26,6 +26,7 @@ const SignUp = () => {
       );
       setProfilePic(res.data.data.url);
     } catch (err) {
+      console.log(err);
       toast.error('Image upload failed');
     }
   };
@@ -73,15 +74,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className='bg-[#e2edff] min-h-screen  md:flex items-center justify-center'>
-       <DotLottieReact className='w-full md:flex hidden'
+    <div className='bg-[#e2edff] min-h-screen  md:flex items-center justify-between '>
+      <div className='w-full h-full'>
+     <DotLottieReact className='w-full h-full  md:flex hidden'
              
       src="https://lottie.host/c998d45f-036d-447b-be4a-6ebbe444b57e/MWx9J7Dngy.lottie"
       loop
       autoplay
     />
-     <div className="md:mr-[360px]">
-  <div className="flex justify-center mt-4 items-center">
+      </div>
+      
+     <div className="md:w-1/2 lg:mr-16 md:ml-24">
+  <div className="flex mt-4 justify-center items-center">
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl pt-6 px-2">
       <h2 className="text-3xl font-semibold text-center">Register your Account</h2>
       <div className="card-body">
@@ -162,11 +166,11 @@ const SignUp = () => {
     </div>
   </div>
 
-  <div className="divider lg:w-96 mx-auto">Or authorize with</div>
+  <div className="divider lg:w-96 ">Or authorize with</div>
 
   <button
     onClick={handleGoogleLogin}
-    className="btn lg:w-96 shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 mx-auto border-[#e5e5e5]"
+    className="btn lg:w-96 shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4  border-[#e5e5e5]"
   >
     <svg
       className="w-6 h-6"

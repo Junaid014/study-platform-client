@@ -85,10 +85,10 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <div className="flex gap-2 justify-center items-center">
+          <Link to='/' className="flex gap-2 justify-center items-center">
             <GiGraduateCap className="text-4xl text-primary" />
-            <a className="text-2xl  text-black font-extrabold">EduSync</a>
-          </div>
+            <span className="text-2xl  text-black font-extrabold">EduSync</span>
+          </Link>
         </div>
 
         <div className="navbar-center hidden lg:flex">
