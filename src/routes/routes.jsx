@@ -7,6 +7,8 @@ import Home from "../Pages/Home/Home";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
+import CreateStudySession from "../Pages/StudySession/CreateStudySession";
+import PrivetRoute from "../Provider/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home
       },
+      {
+        path:'/createSession',
+        element: <PrivetRoute><CreateStudySession/></PrivetRoute>
+      }
       
 ]
   },

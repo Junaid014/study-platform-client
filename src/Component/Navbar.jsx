@@ -56,13 +56,25 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+      <li className="mr-2 text-sm font-semibold">
+        <NavLink
+          to="/createSession"
+          className={({ isActive }) =>
+            isActive
+              ? 'text-[#3B82F6] underline'
+              : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
+          }
+        >
+          Create Session
+        </NavLink>
+      </li>
     
   
     </div>
   );
 
   return (
-    <div className="w-full bg-[#f0f0f0] fixed top-0 left-0 right-0 shadow-sm z-50">
+    <div className="w-full bg-[#e4e6fe] fixed top-0 left-0 right-0 shadow-sm z-50">
       <div className="navbar w-11/12 mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -87,7 +99,7 @@ const Navbar = () => {
 
           <Link to='/' className="flex gap-2 justify-center items-center">
             <GiGraduateCap className="text-4xl text-primary" />
-            <span className="text-2xl  text-black font-extrabold">EduSync</span>
+            <span className="text-2xl  text-primary font-extrabold">EduSync</span>
           </Link>
         </div>
 
@@ -106,8 +118,7 @@ const Navbar = () => {
                   alt="user"
                 />
                 <button
-                  className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9]
- transition duration-300"
+                  className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9] transition duration-300"
                   onClick={handleSignOut}
                 >
                   SignOut
@@ -142,12 +153,12 @@ const Navbar = () => {
                   Login
                 </Link>
 
-                <Link
+                {/* <Link
                   to="/auth/signUp"
                   className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9 transition duration-300"
                 >
                   Sign Up
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>

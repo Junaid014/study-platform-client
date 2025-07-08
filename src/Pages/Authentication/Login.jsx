@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useAuth from '../../hooks/useAuth';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
@@ -11,13 +11,14 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const location =useLocation()
 
   const onSubmit = data => {
     LogInUser(data.email, data.password)
       .then(result => {
         setUser(result.user);
         toast.success('Login successful!');
-        navigate('/');
+        navigate(`${location.state ? location.state : "/"}`)
       })
       .catch(() => {
         toast.error('Invalid email or password');
@@ -29,7 +30,7 @@ const Login = () => {
       .then(result => {
         setUser(result.user);
         toast.success('Google login successful');
-        navigate('/');
+        navigate(`${location.state ? location.state : "/"}`)
       })
       .catch(error => {
         toast.error('Google login failed');
