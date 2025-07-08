@@ -13,7 +13,7 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [profilePic, setProfilePic] = useState('');
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const [showPass, setShowPass] = useState(false);
   const axiosSecure = useAxiosSecure();
 
@@ -46,22 +46,20 @@ const SignUp = () => {
         updateUser({
           displayName: data.name,
           photoURL: profilePic,
-        }).then( async() => {
+        }).then(async () => {
           setUser({ ...user, displayName: data.name, photoURL: profilePic });
 
-          //  save user to db
-            const userInfo = {
+          const userInfo = {
             email: data.email,
             name: data.name,
             image: profilePic,
-            role: 'student', // default role
+            role: 'student',
             created_at: new Date().toISOString(),
             last_log_in: new Date().toISOString(),
           };
 
           try {
-            const userRes = await axiosSecure.post('/users', userInfo);
-            console.log(userRes.data);
+            await axiosSecure.post('/users', userInfo);
           } catch (err) {
             console.error('User DB save failed:', err);
           }
@@ -81,16 +79,15 @@ const SignUp = () => {
 
   const handleGoogleLogin = () => {
     sighInWithGoogle()
-      .then(async(result) => {
+      .then(async (result) => {
         const user = result.user;
         setUser(user);
 
-        // save user to db
         const userInfo = {
           email: user.email,
           name: user.displayName || 'Google User',
           image: user.photoURL,
-          role: 'student', // default role
+          role: 'student',
           created_at: new Date().toISOString(),
           last_log_in: new Date().toISOString(),
         };
@@ -110,10 +107,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className='bg-[#e2edff] min-h-screen  md:flex items-center justify-between '>
+    <div className='bg-[#e2edff] min-h-screen md:flex items-center justify-between'>
       <div className='w-full h-full'>
-        <DotLottieReact className='w-full h-full  md:flex hidden'
-
+        <DotLottieReact
+          className='w-full h-full md:flex hidden'
           src="https://lottie.host/c998d45f-036d-447b-be4a-6ebbe444b57e/MWx9J7Dngy.lottie"
           loop
           autoplay
@@ -159,7 +156,19 @@ const SignUp = () => {
                   <label className="label mr-54 font-medium text-gray-600">Password</label>
                   <input
                     type={showPass ? "text" : "password"}
-                    {...register("password", { required: true, minLength: 6 })}
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters long",
+                      },
+                      validate: {
+                        hasUpper: (value) =>
+                          /[A-Z]/.test(value) || "Must include at least one uppercase letter",
+                        hasLower: (value) =>
+                          /[a-z]/.test(value) || "Must include at least one lowercase letter",
+                      },
+                    })}
                     className="input w-full pr-12 focus:outline-none focus:ring-0 focus:border-gray-600"
                     placeholder="Password"
                   />
@@ -174,13 +183,8 @@ const SignUp = () => {
                       <FaEyeSlash className="text-xl" />
                     )}
                   </button>
-                  {errors.password?.type === "required" && (
-                    <p className="text-red-500">Password is required</p>
-                  )}
-                  {errors.password?.type === "minLength" && (
-                    <p className="text-red-500">
-                      Password must be 6 characters or longer
-                    </p>
+                  {errors.password && (
+                    <p className="text-red-500">{errors.password.message}</p>
                   )}
                 </div>
 
@@ -202,44 +206,41 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="divider lg:w-96 ">Or authorize with</div>
+        <div className="divider lg:w-96">Or authorize with</div>
 
         <button
           onClick={handleGoogleLogin}
-          className="btn lg:w-96 shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4  border-[#e5e5e5]"
+          className="btn lg:w-96 shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 border-[#e5e5e5]"
         >
           <svg
             className="w-6 h-6"
             aria-label="Google logo"
-            width="16"
-            height="16"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
           >
             <g>
-              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path d="m0 0H512V512H0" fill="#fff" />
               <path
                 fill="#34a853"
                 d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
+              />
               <path
                 fill="#4285f4"
                 d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
+              />
               <path
                 fill="#fbbc02"
                 d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-              ></path>
+              />
               <path
                 fill="#ea4335"
                 d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
+              />
             </g>
           </svg>
           Login with Google
         </button>
-      </div>;
-
+      </div>
     </div>
   );
 };
