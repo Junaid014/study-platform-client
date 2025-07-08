@@ -9,6 +9,8 @@ import Login from "../Pages/Authentication/Login";
 import SignUp from "../Pages/Authentication/SignUp";
 import CreateStudySession from "../Pages/StudySession/CreateStudySession";
 import PrivetRoute from "../Provider/PrivetRoute";
+import DashboardLayout from "../Pages/Authentication/DashboardLayout";
+import PendingStudySessions from "../Pages/DashBord/Admin/PendingStudySessions";
 
 export const router = createBrowserRouter([
   {
@@ -41,4 +43,14 @@ export const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:'/dashboard',
+    element:<PrivetRoute><DashboardLayout/></PrivetRoute>,
+    children:[
+      {
+        path:'pendingStudySession',
+        Component:PendingStudySessions
+      }
+    ]
+  }
 ]);
