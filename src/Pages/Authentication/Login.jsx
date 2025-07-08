@@ -5,13 +5,15 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const Login = () => {
   const { LogInUser, sighInWithGoogle, setUser } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
-  const location =useLocation()
+  const location =useLocation();
+    const axiosSecure = useAxiosSecure(); 
 
   const onSubmit = data => {
     LogInUser(data.email, data.password)
@@ -27,8 +29,28 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     sighInWithGoogle()
-      .then(result => {
-        setUser(result.user);
+      .then(async(result) => {
+        const user = result.user;
+        setUser(user);
+
+        // ✅ NEW CODE: Save Google user to DB if not exists
+        const userInfo = {
+          email: user.email,
+          name: user.displayName,
+          image: user.photoURL,
+          role: 'student',
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+
+        try {
+          const res = await axiosSecure.post('/users', userInfo);
+          console.log('Google user saved:', res.data);
+        } catch (err) {
+          console.error('Saving Google user failed:', err);
+        }
+
+        
         toast.success('Google login successful');
         navigate(`${location.state ? location.state : "/"}`)
       })

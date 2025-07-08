@@ -46,8 +46,25 @@ const SignUp = () => {
         updateUser({
           displayName: data.name,
           photoURL: profilePic,
-        }).then(() => {
+        }).then( async() => {
           setUser({ ...user, displayName: data.name, photoURL: profilePic });
+
+          //  save user to db
+            const userInfo = {
+            email: data.email,
+            name: data.name,
+            image: profilePic,
+            role: 'student', // default role
+            created_at: new Date().toISOString(),
+            last_log_in: new Date().toISOString(),
+          };
+
+          try {
+            const userRes = await axiosSecure.post('/users', userInfo);
+            console.log(userRes.data);
+          } catch (err) {
+            console.error('User DB save failed:', err);
+          }
 
           toast.success('Account created successfully!');
           navigate(location.state?.from?.pathname || "/");
@@ -64,9 +81,25 @@ const SignUp = () => {
 
   const handleGoogleLogin = () => {
     sighInWithGoogle()
-      .then((result) => {
+      .then(async(result) => {
         const user = result.user;
         setUser(user);
+
+        // save user to db
+        const userInfo = {
+          email: user.email,
+          name: user.displayName || 'Google User',
+          image: user.photoURL,
+          role: 'student', // default role
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+
+        try {
+          await axiosSecure.post('/users', userInfo);
+        } catch (err) {
+          console.error('Google user DB save failed:', err);
+        }
         toast.success('Google login successful');
         navigate(location.state?.from?.pathname || "/");
       })
