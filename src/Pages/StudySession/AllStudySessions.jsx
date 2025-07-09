@@ -66,13 +66,13 @@ const AllStudySessions = () => {
         }
       `}</style>
 
-                     <div className=" min-h-screen py-14 px-4">
+                     <div className=" min-h-screen py-4 px-4">
                             <h2 className="text-3xl font-semibold text-center roboto mb-10">All Available Study Sessions</h2>
 
                             {isLoading ? (
                                    <div><Loading/></div>
                             ) : (
-                                   <div className="grid md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
                                           {sortedSessions.map((session, index) => (
                                                  <div
                                                         key={session._id}
@@ -109,7 +109,7 @@ const AllStudySessions = () => {
                                                                       {getStatus(session.registrationEnd)}
                                                                </span>
                                                                <Link to={`/sessions/${session._id}`} className="text-blue-600 hover:underline text-sm font-medium">
-                                                                      Read More
+                                                                      Learn More
                                                                </Link>
                                                         </div>
                                                  </div>

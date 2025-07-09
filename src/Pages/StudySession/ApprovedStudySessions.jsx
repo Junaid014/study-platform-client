@@ -43,7 +43,7 @@ const ApprovedStudySessions = () => {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-semibold text-center roboto mb-10">Available Study Sessions</h2>
 
-      <div className="grid md:grid-cols-3 gap-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {ongoingSessions.map((session, index) => (
           <div
             key={session._id}
@@ -72,7 +72,7 @@ const ApprovedStudySessions = () => {
                 Ongoing
               </span>
               <Link to={`/sessions/${session._id}`} className="text-blue-600 hover:underline text-sm font-medium">
-                Read More
+                Learn More
               </Link>
             </div>
           </div>

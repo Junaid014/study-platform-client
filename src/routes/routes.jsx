@@ -13,6 +13,7 @@ import DashboardLayout from "../Pages/Authentication/DashboardLayout";
 import PendingStudySessions from "../Pages/DashBord/Admin/PendingStudySessions";
 import ApprovedStudySessions from "../Pages/StudySession/ApprovedStudySessions";
 import AllStudySessions from "../Pages/StudySession/AllStudySessions";
+import DetailsStudySessions from "../Pages/StudySession/DetailsStudySessions";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path:'allStudySession',
         Component:AllStudySessions
+      },
+      {
+        path:'/sessions/:id',
+        element:<DetailsStudySessions/>
       }
       
 ]
