@@ -12,6 +12,7 @@ import PrivetRoute from "../Provider/PrivetRoute";
 import DashboardLayout from "../Pages/Authentication/DashboardLayout";
 import PendingStudySessions from "../Pages/DashBord/Admin/PendingStudySessions";
 import ApprovedStudySessions from "../Pages/StudySession/ApprovedStudySessions";
+import AllStudySessions from "../Pages/StudySession/AllStudySessions";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'allStudySession',
-        Component:ApprovedStudySessions
+        Component:AllStudySessions
       }
       
 ]
