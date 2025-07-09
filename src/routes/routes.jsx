@@ -14,6 +14,7 @@ import PendingStudySessions from "../Pages/DashBord/Admin/PendingStudySessions";
 import ApprovedStudySessions from "../Pages/StudySession/ApprovedStudySessions";
 import AllStudySessions from "../Pages/StudySession/AllStudySessions";
 import DetailsStudySessions from "../Pages/StudySession/DetailsStudySessions";
+import Forbidden from "../Pages/Extra/Forbidden";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       {
         path:'/sessions/:id',
         element:<DetailsStudySessions/>
-      }
+      },
+      {
+        path:'forbidden',
+        Component:Forbidden
+      },
       
 ]
   },
