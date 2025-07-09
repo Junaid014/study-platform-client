@@ -1,9 +1,10 @@
 import React from 'react';
+import ApprovedStudySessions from '../StudySession/ApprovedStudySessions';
 
 const Home = () => {
        return (
               <div>
-                     this is home
+                     <ApprovedStudySessions/>
               </div>
        );
 };

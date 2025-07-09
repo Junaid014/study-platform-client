@@ -53,7 +53,7 @@ const PendingStudySessions = () => {
         <p className="text-sm roboto text-gray-500 mt-2">Pending sessions will appear here once available.</p>
       </div>
     ) : (
-      <div className="overflow-x-auto shadow-md px-9 pt-4 rounded-lg  bg-white">
+      <div className="overflow-x-auto shadow-md px-2 py-4 rounded-lg  bg-white">
         <table className="table w-full">
           <thead className="bg-gray-100 text-gray-700">
             <tr>
