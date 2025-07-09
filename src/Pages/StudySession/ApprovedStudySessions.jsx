@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
 import { FaBook, FaCalendarAlt } from 'react-icons/fa';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import CustomButton from '../Extra/CustomButton';
 
 const ApprovedStudySessions = () => {
   const axiosSecure = useAxiosSecure();
@@ -84,12 +85,9 @@ const ApprovedStudySessions = () => {
       </div>
 
       <div className="flex justify-center mt-10">
-        <Link
-          to="/allStudySession"
-          className="bg-[#e6504e] hover:bg-[#c7403e] text-white px-6 py-2 rounded-md text-sm font-medium shadow-md"
-        >
+        <CustomButton to="/allStudySession">
           Show All Available Sessions
-        </Link>
+        </CustomButton>
       </div>
     </div>
   );

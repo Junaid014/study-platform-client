@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import CustomButton from '../Extra/CustomButton';
 
 const CreateStudySession = () => {
        const { register, handleSubmit, reset } = useForm();
@@ -116,9 +117,7 @@ const CreateStudySession = () => {
                             </div>
 
                             <div className="md:col-span-2">
-                                   <button type="submit" className="btn text-white rounded-lg font-medium shadow-md bg-gradient-to-r from-[#e6504e] to-[#ff605b] hover:bg-gradient-to-l hover:from-[#e6504e] hover:to-[#ff605b] transition duration-300 w-full mt-4">
-                                          Submit Session
-                                   </button>
+                                  <CustomButton>Submit Session</CustomButton>
                             </div>
                      </form>
               </div>

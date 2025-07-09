@@ -1,11 +1,20 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuth from '../../hooks/useAuth';
+import useUserRole from '../../hooks/useUserRole';
+import Loading from '../../Pages/Extra/Loading';
+import { FaCalendarAlt, FaClock, FaDollarSign, FaStar, FaUser } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+import CustomButton from '../Extra/CustomButton';
 
 const DetailsStudySessions = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const { role, roleLoading } = useUserRole();
+  const navigate = useNavigate();
 
   const { data: session, isLoading, error } = useQuery({
     queryKey: ['studySession', id],
@@ -16,20 +25,100 @@ const DetailsStudySessions = () => {
     enabled: !!id,
   });
 
-  if (isLoading) return <div>Loading session details...</div>;
-  if (error) return <div>Error loading session: {error.message}</div>;
-  if (!session) return <div>Session not found</div>;
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const yyyy = date.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  };
+
+  const isRegistrationClosed = (endDate) => new Date(endDate) < new Date();
+
+  if (isLoading || roleLoading)
+    return <div className="text-center py-10 text-gray-500"><Loading/> </div>;
+
+  if (error) return <div className="text-center py-10 text-red-500">Error loading session</div>;
+  if (!session) return <div className="text-center py-10 text-gray-500">Session not found</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">{session.title}</h1>
-      <img src={session.image} alt={session.title} className="w-full h-60 object-cover rounded-md mb-4" />
-      <p><strong>Tutor:</strong> {session.tutorName} ({session.tutorEmail})</p>
-      <p><strong>Registration Period:</strong> {new Date(session.registrationStart).toLocaleDateString()} - {new Date(session.registrationEnd).toLocaleDateString()}</p>
-      <p><strong>Class Period:</strong> {new Date(session.classStart).toLocaleDateString()} - {new Date(session.classEnd).toLocaleDateString()}</p>
-      <p><strong>Duration:</strong> {session.duration}</p>
-      <p><strong>Fee:</strong> {session.fee === "0" ? "Free" : `$${session.fee}`}</p>
-      <p className="mt-4">{session.description}</p>
+    <div className="max-w-4xl mx-auto px-4 py-10">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <img src={session.image} alt={session.title} className="w-full p-2 rounded-2xl h-96 object-cover" />
+        <div className="p-6">
+          <h1 className="text-2xl text-start roboto font-semibold text-gray-800 mb-4">{session.title}</h1>
+          <div className="grid roboto sm:grid-cols-2 gap-4 text-gray-700 mb-6">
+            <div className="flex items-center gap-2">
+              <FaUser className="text-blue-500" />
+              Tutor: {session.tutorName}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaStar className="text-yellow-500" />
+              Average Rating: <span className="font-semibold">4.5</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCalendarAlt className="text-green-500" />
+              Registration Start: {formatDate(session.registrationStart)}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCalendarAlt className="text-red-500" />
+              Registration End: {formatDate(session.registrationEnd)}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCalendarAlt className="text-indigo-500" />
+              Class Start: {formatDate(session.classStart)}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaCalendarAlt className="text-pink-500" />
+              Class End: {formatDate(session.classEnd)}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaClock className="text-orange-500" />
+              Duration: {session.duration}
+            </div>
+            <div className="flex items-center gap-2">
+              <FaDollarSign className="text-green-600" />
+              Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}
+            </div>
+          </div>
+
+          <p className="text-gray-800 text-start roboto leading-relaxed mb-6">{session.description}</p>
+
+{/* Booking Button Logic */}
+{isRegistrationClosed(session.registrationEnd) ? (
+  <button className="bg-gray-400 text-white px-6 py-2 rounded-md cursor-not-allowed" disabled>
+    Registration Closed
+  </button>
+) : !user ? (
+  <CustomButton
+    onClick={() => {
+      toast.info('Please log in to book this session');
+      setTimeout(() => navigate('/auth/login',{ state: location.pathname }), 1000); // Redirect after 1.5s
+    }}
+    className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md"
+  >
+    Book Now 
+  </CustomButton>
+) : role !== 'student' ? (
+  <CustomButton
+    onClick={() => toast.warning('Only students can book sessions')}
+    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md"
+  >
+    Book Now
+  </CustomButton>
+) : (
+  <CustomButton className='flex justify-start'>Book Now</CustomButton>
+)}
+
+
+
+          {/* Review Section */}
+          <div className="mt-10">
+            <h3 className="text-xl font-semibold mb-2">Reviews</h3>
+            <p className="text-gray-500 text-sm">Review section coming soon...</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
