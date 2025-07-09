@@ -1,17 +1,17 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAuth from '../../hooks/useAuth';
 import useUserRole from '../../hooks/useUserRole';
 import Loading from '../../Pages/Extra/Loading';
 import { FaCalendarAlt, FaClock, FaDollarSign, FaStar, FaUser } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import CustomButton from '../Extra/CustomButton';
+import useAxios from '../../hooks/useAxios';
 
 const DetailsStudySessions = () => {
   const { id } = useParams();
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
   const { user } = useAuth();
   const { role, roleLoading } = useUserRole();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const DetailsStudySessions = () => {
   const { data: session, isLoading, error } = useQuery({
     queryKey: ['studySession', id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/study-sessions/${id}`);
+      const res = await axiosInstance.get(`/study-sessions/${id}`);
       return res.data;
     },
     enabled: !!id,
@@ -58,11 +58,11 @@ const DetailsStudySessions = () => {
             </div>
             <div className="flex items-center gap-2">
               <FaCalendarAlt className="text-green-500" />
-              Registration Start: {formatDate(session.registrationStart)}
+              Registration Start: <span className='underline text-blue-500 font-semibold'> {formatDate(session.registrationStart)}</span>
             </div>
             <div className="flex items-center gap-2">
               <FaCalendarAlt className="text-red-500" />
-              Registration End: {formatDate(session.registrationEnd)}
+              Registration End: <span className='underline text-blue-500 font-semibold'>{formatDate(session.registrationEnd)}</span>
             </div>
             <div className="flex items-center gap-2">
               <FaCalendarAlt className="text-indigo-500" />

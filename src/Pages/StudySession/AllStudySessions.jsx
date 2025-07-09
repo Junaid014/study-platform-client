@@ -11,7 +11,7 @@ const AllStudySessions = () => {
        const { data: allApprovedSessions = [], isLoading } = useQuery({
               queryKey: ['allApprovedSessions'],
               queryFn: async () => {
-                     const res = await axiosSecure.get('/study-sessions?status=approved');
+                    const res = await axiosSecure.get('/study-sessions/approved');
                      return res.data;
               },
        });

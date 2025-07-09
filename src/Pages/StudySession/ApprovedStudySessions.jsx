@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { FaBook, FaCalendarAlt } from 'react-icons/fa';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import CustomButton from '../Extra/CustomButton';
+import Loading from '../Extra/Loading';
 
 const ApprovedStudySessions = () => {
   const axiosSecure = useAxiosSecure();
@@ -11,7 +12,7 @@ const ApprovedStudySessions = () => {
   const { data: approvedSessions = [], isLoading } = useQuery({
     queryKey: ['approvedSessionsHome'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/study-sessions?status=approved&limit=20');
+     const res = await axiosSecure.get('/study-sessions/approved'); // ✅ Use new backend route
       return res.data;
     },
   });
@@ -79,16 +80,18 @@ const ApprovedStudySessions = () => {
           </div>
         ))}
 
-        {ongoingSessions.length === 0 && (
-          <p className="col-span-3 text-center text-gray-500 text-lg py-10">No ongoing study sessions available.</p>
-        )}
+        
       </div>
-
-      <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-10">
         <CustomButton to="/allStudySession">
           Show All Available Sessions
         </CustomButton>
       </div>
+
+      {ongoingSessions.length === 0 && (
+         <Loading/>
+        )}
+      
     </div>
   );
 };
