@@ -1,11 +1,13 @@
 import React from 'react';
 import { GiGraduateCap } from 'react-icons/gi';
 import { Link, NavLink, Outlet } from 'react-router';
+import { FaClock, FaUserShield } from "react-icons/fa";
+
 
 const DashboardLayout = () => {
        return (
               <div className="drawer lg:drawer-open">
-                     
+
                      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                      <div className="drawer-content flex flex-col">
 
@@ -32,7 +34,7 @@ const DashboardLayout = () => {
 
                             </div>
                             {/* Page content here */}
-                            <Outlet/>
+                            <Outlet />
                             {/* Page content here */}
 
                      </div>
@@ -40,13 +42,28 @@ const DashboardLayout = () => {
                             <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu bg-[#e4e6fe] text-base-content min-h-full w-80 p-4">
                                    {/* Sidebar content here */}
-                                   
-                                 
+
+
                                    <Link to='/' className="flex gap-2  items-center">
                                           <GiGraduateCap className="text-4xl text-primary" />
                                           <span className="text-2xl  text-primary font-extrabold">EduSync</span>
                                    </Link>
-                                   <li className='font-medium text-black border border-dashed border-gray-300'><NavLink to="/dashboard/pendingStudySession">Pending Study Sessions</NavLink></li>
+
+
+                                   {/* <li className='font-medium text-black border border-dashed border-gray-300'><NavLink to="/dashboard/pendingStudySession">Pending Study Sessions</NavLink></li> */}
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/dashboard/pendingStudySession" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaClock className="text-[#3d53eb]" /> Pending Study Sessions
+                                          </NavLink>
+                                   </li>
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/dashboard/makeAdmin" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaUserShield className="text-[#3d53eb]" /> Make Admin
+                                          </NavLink>
+                                   </li>
+
                             </ul>
                      </div>
               </div>

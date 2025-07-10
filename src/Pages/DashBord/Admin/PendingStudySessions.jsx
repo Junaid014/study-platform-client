@@ -79,7 +79,7 @@ const PendingStudySessions = () => {
                 <td className="flex gap-2">
                   <button
                     onClick={() => handleStatusUpdate(session, 'approved')}
-                    className="btn btn-sm bg-green-500 hover:bg-green-600 text-white"
+                    className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
                   >
                     Accept
                   </button>

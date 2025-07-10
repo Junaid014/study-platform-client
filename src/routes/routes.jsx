@@ -15,6 +15,7 @@ import ApprovedStudySessions from "../Pages/StudySession/ApprovedStudySessions";
 import AllStudySessions from "../Pages/StudySession/AllStudySessions";
 import DetailsStudySessions from "../Pages/StudySession/DetailsStudySessions";
 import Forbidden from "../Pages/Extra/Forbidden";
+import MakeAdmin from "../Pages/DashBord/Admin/MakeAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path:'pendingStudySession',
         Component:PendingStudySessions
+      },
+      {
+        path:'makeAdmin',
+        Component:MakeAdmin
       }
     ]
   }
