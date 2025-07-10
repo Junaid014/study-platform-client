@@ -42,7 +42,7 @@ const DetailsStudySessions = () => {
   if (!session) return <div className="text-center py-10 text-gray-500">Session not found</div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-4xl mx-auto px-4 py-5">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
         <img src={session.image} alt={session.title} className="w-full p-2 rounded-2xl h-96 object-cover" />
         <div className="p-6">

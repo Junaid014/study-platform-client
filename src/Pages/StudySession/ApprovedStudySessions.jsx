@@ -44,8 +44,8 @@ const ApprovedStudySessions = () => {
   };
 
   if (isLoading) {
-    return null; // or your <Loading /> component if you have it
-  }
+  return <Loading />;
+}
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
