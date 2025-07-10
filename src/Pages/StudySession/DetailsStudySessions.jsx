@@ -76,9 +76,9 @@ const DetailsStudySessions = () => {
               <FaClock className="text-orange-500" />
               Duration: {session.duration}
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 ">
               <FaDollarSign className="text-green-600" />
-              Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}
+              Fee: <span className='text-gray-700 bg-orange-300 rounded-2xl px-2'>{session.fee === '0' ? '0 $' : `$${session.fee}`}</span>
             </div>
           </div>
 

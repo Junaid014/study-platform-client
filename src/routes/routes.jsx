@@ -16,6 +16,8 @@ import AllStudySessions from "../Pages/StudySession/AllStudySessions";
 import DetailsStudySessions from "../Pages/StudySession/DetailsStudySessions";
 import Forbidden from "../Pages/Extra/Forbidden";
 import MakeAdmin from "../Pages/DashBord/Admin/MakeAdmin";
+import AdminRoute from "../Provider/AdminRoute";
+import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -70,11 +72,15 @@ export const router = createBrowserRouter([
     children:[
       {
         path:'pendingStudySession',
-        Component:PendingStudySessions
+        element:<AdminRoute><PendingStudySessions/></AdminRoute>
       },
       {
         path:'makeAdmin',
-        Component:MakeAdmin
+        element: <AdminRoute> <MakeAdmin/> </AdminRoute> 
+      },
+      {
+        path: 'approvedSessionAdmin',
+        element:<AdminRoute> <ApprovedSessionsAdmin/> </AdminRoute>
       }
     ]
   }

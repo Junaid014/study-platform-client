@@ -117,7 +117,7 @@ const CreateStudySession = () => {
                             </div>
 
                             <div className="md:col-span-2">
-                                  <CustomButton>Submit Session</CustomButton>
+                                  <CustomButton type='submit'>Submit Session</CustomButton>
                             </div>
                      </form>
               </div>

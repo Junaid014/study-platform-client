@@ -10,11 +10,16 @@ const ApprovedStudySessions = () => {
   const axiosSecure = useAxiosSecure();
 
   const { data: approvedSessions = [], isLoading } = useQuery({
-    queryKey: ['approvedSessionsHome'],
-    queryFn: async () => {
-     const res = await axiosSecure.get('/study-sessions/approved'); // ✅ Use new backend route
-      return res.data;
-    },
+   queryFn: async () => {
+  const res = await axiosSecure.get('/study-sessions/approved');
+  const filtered = res.data
+    .filter(session => new Date(session.registrationEnd) >= new Date())
+    .sort((a, b) => new Date(a.registrationEnd) - new Date(b.registrationEnd))
+    .slice(0, 6); // take first 6
+
+  return filtered;
+}
+
   });
 
   // Format date as DD/MM/YYYY

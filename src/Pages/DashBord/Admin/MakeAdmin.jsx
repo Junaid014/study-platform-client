@@ -17,7 +17,7 @@ const MakeAdmin = () => {
         const sorted = res.data
           .filter(user => user.last_log_in)
           .sort((a, b) => new Date(b.last_log_in) - new Date(a.last_log_in))
-          .slice(0, 4);
+          .slice(0, 3);
         setRecentUsers(sorted);
       } catch (err) {
         console.error(err);

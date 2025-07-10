@@ -1,10 +1,15 @@
 import React from 'react';
 import { GiGraduateCap } from 'react-icons/gi';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaClock, FaUserShield } from "react-icons/fa";
+import { FaCheckCircle, FaClock, FaUserShield } from "react-icons/fa";
+import useUserRole from '../../hooks/useUserRole';
 
 
 const DashboardLayout = () => {
+
+       const { role, roleLoading } = useUserRole();
+       console.log(role);
+
        return (
               <div className="drawer lg:drawer-open">
 
@@ -50,19 +55,31 @@ const DashboardLayout = () => {
                                    </Link>
 
 
-                                   {/* <li className='font-medium text-black border border-dashed border-gray-300'><NavLink to="/dashboard/pendingStudySession">Pending Study Sessions</NavLink></li> */}
+                                   {/* Admin route  */}
 
-                                   <li className="font-medium text-black border border-dashed border-gray-300">
-                                          <NavLink to="/dashboard/pendingStudySession" className="flex items-center gap-2 px-2 py-1">
-                                                 <FaClock className="text-[#3d53eb]" /> Pending Study Sessions
-                                          </NavLink>
-                                   </li>
+                                   {!roleLoading && role === 'admin' &&
+                                          <>
+                                                 <li className="font-medium text-black border border-dashed border-gray-300">
+                                                        <NavLink to="/dashboard/pendingStudySession" className="flex items-center gap-2 px-2 py-1">
+                                                               <FaClock className="text-[#3d53eb]" /> Pending Study Sessions
+                                                        </NavLink>
+                                                 </li>
 
-                                   <li className="font-medium text-black border border-dashed border-gray-300">
-                                          <NavLink to="/dashboard/makeAdmin" className="flex items-center gap-2 px-2 py-1">
-                                                 <FaUserShield className="text-[#3d53eb]" /> Make Admin
-                                          </NavLink>
-                                   </li>
+                                                 <li className="font-medium text-black border border-dashed border-gray-300">
+                                                        <NavLink to="/dashboard/makeAdmin" className="flex items-center gap-2 px-2 py-1">
+                                                               <FaUserShield className="text-[#3d53eb]" /> Make Admin
+                                                        </NavLink>
+                                                 </li>
+                                                 <li className="font-medium text-black border border-dashed border-gray-300">
+                                                        <NavLink to="/dashboard/approvedSessionAdmin" className="flex items-center gap-2 px-2 py-1">
+                                                               <FaCheckCircle className="text-[#3d53eb]" /> Approved Sessions
+                                                        </NavLink>
+                                                 </li>
+
+                                          </>
+                                   }
+
+
 
                             </ul>
                      </div>
