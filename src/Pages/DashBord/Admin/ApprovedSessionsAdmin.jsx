@@ -42,12 +42,13 @@ const ApprovedSessionsAdmin = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold mb-8 text-center roboto text-[#3d53eb]">📚 Approved Study Sessions</h2>
+      <h2 className="text-3xl font-bold mb-8 text-center roboto text-[#422ad5]">📚 Approved Study Sessions</h2>
 
       <div className="overflow-x-auto bg-white shadow-2xl rounded-xl border border-gray-200">
         <table className="min-w-full table">
           <thead className="bg-gradient-to-r from-[#e2e8f0] to-[#cbd5e1] text-gray-800 text-sm uppercase tracking-wide rounded-t-md">
             <tr>
+              <th>#</th>
               <th className="py-3 px-4 text-left">Title</th>
               <th className="py-3 px-4 text-left">Tutor</th>
               <th className="py-3 px-4 text-left">Fee</th>
@@ -59,6 +60,7 @@ const ApprovedSessionsAdmin = () => {
           <tbody>
             {approvedSessions.map((session, idx) => (
               <tr key={session._id} className={`border-t hover:bg-gray-50 transition duration-150`}>
+                <td>{idx+1}</td>
                 <td className="py-3 px-4 font-medium text-gray-800">{session.title}</td>
                 <td className="py-3 px-4">
                   <div className="font-semibold text-gray-700">{session.tutorName}</div>
@@ -74,14 +76,14 @@ const ApprovedSessionsAdmin = () => {
                 <td className="py-3 px-4 flex items-center justify-center gap-4">
                   <button
                     onClick={() => handleDelete(session._id)}
-                    className="text-red-600 hover:text-red-800 tooltip"
+                    className="text-red-600 pt-2.5 cursor-pointer hover:text-red-800 tooltip"
                     title="Delete"
                   >
                     <FaTrashAlt size={18} />
                   </button>
                   <button
                     onClick={() => console.log('Edit clicked:', session._id)}
-                    className="text-blue-600 hover:text-blue-800 tooltip"
+                    className="text-blue-600 pt-2.5 cursor-pointer hover:text-blue-800 tooltip"
                     title="Update"
                   >
                     <FaEdit size={18} />

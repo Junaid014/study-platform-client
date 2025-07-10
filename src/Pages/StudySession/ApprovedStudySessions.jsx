@@ -15,7 +15,8 @@ const ApprovedStudySessions = () => {
   const filtered = res.data
     .filter(session => new Date(session.registrationEnd) >= new Date())
     .sort((a, b) => new Date(a.registrationEnd) - new Date(b.registrationEnd))
-    .slice(0, 6); // take first 6
+    .slice(0, 6); 
+    
 
   return filtered;
 }
