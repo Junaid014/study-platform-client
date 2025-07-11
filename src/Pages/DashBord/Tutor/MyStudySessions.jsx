@@ -5,6 +5,9 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import Loading from '../../Extra/Loading';
+import CustomButton from '../../Extra/CustomButton';
+import { FiUploadCloud } from 'react-icons/fi';
+
 
 const MyStudySessions = () => {
   const axiosSecure = useAxiosSecure();
@@ -123,10 +126,10 @@ const MyStudySessions = () => {
                 <td className="py-3 px-7">
                   <button
                     className={`px-4 py-1 cursor-pointer rounded-full text-sm font-semibold shadow-md transition-all duration-200 relative group ${session.status === 'approved'
-                        ? 'bg-green-100 text-green-700 cursor-default'
-                        : session.status === 'pending'
-                          ? 'bg-yellow-100 text-yellow-800 cursor-default'
-                          : 'bg-red-100 text-red-700 hover:bg-red-200'
+                      ? 'bg-green-100 text-green-700 cursor-default'
+                      : session.status === 'pending'
+                        ? 'bg-yellow-100 text-yellow-800 cursor-default'
+                        : 'bg-red-100 text-red-700 hover:bg-red-200'
                       }`}
                     onClick={() => session.status === 'rejected' && handleResubmit(session._id)}
                     disabled={session.status !== 'rejected'}
@@ -148,10 +151,12 @@ const MyStudySessions = () => {
                         setMaterial({ image: '', link: '' });
                         document.getElementById('upload_modal')?.showModal();
                       }}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
+                      className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-3 py-1 rounded text-sm flex items-center gap-2"
                     >
-                      Upload Materials
+                      <FiUploadCloud className="text-lg" />
+                      Upload
                     </button>
+
                   )}
 
                 </td>
@@ -171,7 +176,7 @@ const MyStudySessions = () => {
       {selectedSession && (
         <dialog id="upload_modal" className="modal">
           <div className="modal-box">
-            <h2 className="text-xl font-semibold text-center text-[#422ad5] mb-4">Upload Materials</h2>
+            <h2 className="text-xl  font-semibold text-center text-[#422ad5] mb-4">Upload Materials</h2>
             <form onSubmit={handleUpload} className="space-y-4">
               <input
                 type="text"
@@ -200,13 +205,13 @@ const MyStudySessions = () => {
                 className="w-full border rounded p-2 text-sm"
                 required
               />
-              <button
+              <CustomButton
                 type="submit"
                 disabled={uploading}
                 className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded"
               >
                 {uploading ? 'Uploading...' : 'Submit'}
-              </button>
+              </CustomButton>
             </form>
             <div className="modal-action mt-4">
               <form method="dialog">

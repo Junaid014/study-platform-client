@@ -1,7 +1,7 @@
 import React from 'react';
 import { GiGraduateCap } from 'react-icons/gi';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaBook, FaCheckCircle, FaClock, FaPlusCircle, FaUserShield } from "react-icons/fa";
+import { FaBook, FaCheckCircle, FaClock, FaFolderOpen, FaPlusCircle, FaUserShield } from "react-icons/fa";
 import useUserRole from '../../hooks/useUserRole';
 
 
@@ -65,6 +65,12 @@ const DashboardLayout = () => {
                                    <li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
   <NavLink to="/dashboard/myStudySessions" className="flex items-center gap-2 px-2 py-1">
     <FaBook className="text-[#3d53eb]" /> My Study Sessions
+  </NavLink>
+</li>
+
+<li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
+  <NavLink to="/dashboard/myMaterials" className="flex items-center gap-2 px-2 py-1">
+    <FaFolderOpen className="text-[#3d53eb]" /> View Materials
   </NavLink>
 </li>
 

@@ -19,6 +19,7 @@ import MakeAdmin from "../Pages/DashBord/Admin/MakeAdmin";
 import AdminRoute from "../Provider/AdminRoute";
 import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin";
 import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
+import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ export const router = createBrowserRouter([
       {
         path:'myStudySessions',
         Component:MyStudySessions
+      },
+      {
+        path:'myMaterials',
+        Component:MyMaterials
       }
     ]
   }
