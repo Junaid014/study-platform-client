@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaTwitter, FaWhatsapp, FaEnvelope, FaClock, FaQuestionCircle, FaWallet, FaShieldAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+
 
 const supportData = [
   {
@@ -31,19 +32,25 @@ export const SupportCards = () => {
       </h2>
 
       <div className="grid md:grid-cols-3 gap-10">
-        {supportData.map((card, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.3, ease: 'easeOut' }}
-            className={`rounded-xl p-8 text-white shadow-lg bg-gradient-to-br ${card.color} hover:scale-[1.03] transition-transform duration-300`}
-          >
-            <div className="mb-4 flex justify-center text-white">{card.icon}</div>
-            <h3 className="text-2xl font-bold mb-2 text-center">{card.title}</h3>
-            <p className="text-sm text-center leading-relaxed">{card.description}</p>
-          </motion.div>
-        ))}
+        {supportData.map((card, index) => {
+          const ref = useRef(null);
+          const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+          return (
+            <motion.div
+              ref={ref}
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.3, ease: 'easeOut' }}
+              className={`rounded-xl p-8 text-white shadow-lg bg-gradient-to-br ${card.color} hover:scale-[1.03] transition-transform duration-300`}
+            >
+              <div className="mb-4 flex justify-center text-white">{card.icon}</div>
+              <h3 className="text-2xl font-bold mb-2 text-center">{card.title}</h3>
+              <p className="text-sm text-center leading-relaxed">{card.description}</p>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
@@ -51,18 +58,22 @@ export const SupportCards = () => {
 
 // Contact Info Section
 export const ContactDetails = () => {
- return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }} 
-      animate={{ opacity: 1, y: 0 }} 
-      transition={{ duration: 0.6 }} 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6 }}
       className="bg-gradient-to-b from-white to-blue-50 rounded-xl shadow-lg max-w-4xl mx-auto px-6 py-10"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#422ad5] mb-6 roboto">
         💬 Get in Touch With Us
       </h2>
 
-      <div className="flex  justify-between flex-col lg:flex-row gap-8 text-gray-700 text-base md:text-lg">
+      <div className="flex justify-between flex-col lg:flex-row gap-8 text-gray-700 text-base md:text-lg">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <FaPhoneAlt className="text-[#e6504e]" />
@@ -70,7 +81,6 @@ export const ContactDetails = () => {
               <span className="font-semibold">Phone:</span> +1-202-555-0150, +1-202-555-0151
             </p>
           </div>
-
           <div className="flex items-center gap-3">
             <FaEnvelope className="text-[#e6504e]" />
             <p>
@@ -86,7 +96,6 @@ export const ContactDetails = () => {
               <span className="font-semibold">Twitter:</span> @acadessessions
             </p>
           </div>
-
           <div className="flex items-center gap-3">
             <FaWhatsapp className="text-green-500" />
             <p>
@@ -102,6 +111,7 @@ export const ContactDetails = () => {
     </motion.div>
   );
 };
+
 
 
 // Feedback Form
