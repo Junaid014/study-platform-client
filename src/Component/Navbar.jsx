@@ -44,7 +44,7 @@ const Navbar = () => {
   const links = (
     <div className="flex text-[#0F0F0FB3] font-medium">
      
-      <li className="mr-2 text-sm font-semibold">
+      <li className=" text-sm font-semibold">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -56,7 +56,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="mr-2 text-sm font-semibold">
+      <li className=" text-sm font-semibold">
         <NavLink
           to="/allStudySession"
           className={({ isActive }) =>
@@ -68,7 +68,7 @@ const Navbar = () => {
           All Study Sessions
         </NavLink>
       </li>
-      <li className="mr-2 text-sm font-semibold">
+      <li className=" text-sm font-semibold">
         <NavLink
           to="/createSession"
           className={({ isActive }) =>
@@ -80,7 +80,7 @@ const Navbar = () => {
           Create Session
         </NavLink>
       </li>
-      <li className="mr-2 text-sm font-semibold">
+      <li className=" text-sm font-semibold">
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { GiGraduateCap } from 'react-icons/gi';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaCheckCircle, FaClock, FaUserShield } from "react-icons/fa";
+import { FaBook, FaCheckCircle, FaClock, FaPlusCircle, FaUserShield } from "react-icons/fa";
 import useUserRole from '../../hooks/useUserRole';
 
 
@@ -53,6 +53,20 @@ const DashboardLayout = () => {
                                           <GiGraduateCap className="text-4xl text-primary" />
                                           <span className="text-2xl  text-primary font-extrabold">EduSync</span>
                                    </Link>
+
+                                   {/* tutor route */}
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/createSession" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaPlusCircle className="text-[#3d53eb]" /> Create Study Session
+                                          </NavLink>
+                                   </li>
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
+  <NavLink to="/dashboard/myStudySessions" className="flex items-center gap-2 px-2 py-1">
+    <FaBook className="text-[#3d53eb]" /> My Study Sessions
+  </NavLink>
+</li>
 
 
                                    {/* Admin route  */}

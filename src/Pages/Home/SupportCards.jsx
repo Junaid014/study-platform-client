@@ -96,7 +96,7 @@ export const ContactDetails = () => {
         </div>
       </div>
 
-      <p className="text-center text-sm mt-10 text-gray-500">
+      <p className="text-center text-sm mt-10 text-gray-700 roboto">
         We’re always here to help. Contact us anytime!
       </p>
     </motion.div>

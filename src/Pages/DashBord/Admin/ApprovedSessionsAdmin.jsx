@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import Loading from '../../Extra/Loading';
 
 const ApprovedSessionsAdmin = () => {
   const axiosSecure = useAxiosSecure();
@@ -38,7 +39,7 @@ const ApprovedSessionsAdmin = () => {
     }
   };
 
-  if (isLoading) return <p className="text-center mt-10 font-semibold">Loading approved sessions...</p>;
+  if (isLoading) return <p className="text-center mt-10 font-semibold"><Loading/></p>;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-4">

@@ -18,6 +18,7 @@ import Forbidden from "../Pages/Extra/Forbidden";
 import MakeAdmin from "../Pages/DashBord/Admin/MakeAdmin";
 import AdminRoute from "../Provider/AdminRoute";
 import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin";
+import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: 'approvedSessionAdmin',
         element:<AdminRoute> <ApprovedSessionsAdmin/> </AdminRoute>
+      },
+      {
+        path:'myStudySessions',
+        Component:MyStudySessions
       }
     ]
   }
