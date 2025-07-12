@@ -116,6 +116,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { FiFolder } from "react-icons/fi";
+import EmptyState from '../../Extra/EmptyState ';
 
 const PendingStudySessions = () => {
   const axiosSecure = useAxiosSecure();
@@ -213,11 +214,11 @@ const PendingStudySessions = () => {
       <h2 className="text-3xl font-bold mb-8 text-center roboto text-[#e6504e]">⏳ Pending Study Sessions</h2>
 
       {sessions.length === 0 ? (
-        <div className="flex flex-col items-center justify-center text-gray-600 border border-[#3d53eb] m-6 p-24 rounded-lg bg-gray-50 shadow-sm">
-          <FiFolder className="text-5xl  text-[#3d53eb] mb-3" />
-          <p className="text-xl roboto font-semibold">No pending sessions found</p>
-          <p className="text-sm roboto text-gray-500 mt-2">Pending sessions will appear here once available.</p>
-        </div>
+         <EmptyState
+    icon="calendar"
+    title="No Pending Sessions"
+    message="Your pending sessions will appear here once submitted."
+  />
       ) : (
         <div className="overflow-x-auto shadow-md px-2 py-4 rounded-lg  bg-white">
           <table className="table w-full">

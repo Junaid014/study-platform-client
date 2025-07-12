@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import Loading from '../../Extra/Loading';
+import EmptyState from '../../Extra/EmptyState ';
 
 const ApprovedSessionsAdmin = () => {
   const axiosSecure = useAxiosSecure();
@@ -96,9 +97,11 @@ const ApprovedSessionsAdmin = () => {
         </table>
 
         {approvedSessions.length === 0 && (
-          <div className="text-center py-10 text-gray-600 font-semibold">
-            No approved sessions found.
-          </div>
+          <EmptyState
+    icon="book"
+    title="No Approved Sessions"
+    message="Approved sessions will show up here."
+  />
         )}
       </div>
     </div>

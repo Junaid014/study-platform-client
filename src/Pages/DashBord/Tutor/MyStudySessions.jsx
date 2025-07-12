@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import Loading from '../../Extra/Loading';
 import CustomButton from '../../Extra/CustomButton';
 import { FiUploadCloud } from 'react-icons/fi';
+import EmptyState from '../../Extra/EmptyState ';
 
 
 const MyStudySessions = () => {
@@ -166,62 +167,65 @@ const MyStudySessions = () => {
         </table>
 
         {mySessions.length === 0 && (
-          <div className="text-center py-10 text-gray-600 font-semibold">
-            You haven't created any sessions yet.
-          </div>
+          <EmptyState
+    icon="book"
+    title="No Study Sessions Found"
+    message="You haven’t created any study sessions yet. Once you do, they’ll appear here."
+  />
         )}
       </div>
 
-      {/* Modal */}
-      {selectedSession && (
-        <dialog id="upload_modal" className="modal">
-          <div className="modal-box">
-            <h2 className="text-xl  font-semibold text-center text-[#422ad5] mb-4">Upload Materials</h2>
-            <form onSubmit={handleUpload} className="space-y-4">
-              <input
-                type="text"
-                value={selectedSession?._id || ''}
-                readOnly
-                className="w-full bg-gray-100 text-sm p-2 rounded border"
-              />
-              <input
-                type="text"
-                value={user?.email}
-                readOnly
-                className="w-full bg-gray-100 text-sm p-2 rounded border"
-              />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => setMaterial({ ...material, image: e.target.files[0] })}
-                className="w-full border rounded p-2 text-sm"
-                required
-              />
-              <input
-                type="text"
-                placeholder="Google Drive Link"
-                value={material.link}
-                onChange={(e) => setMaterial({ ...material, link: e.target.value })}
-                className="w-full border rounded p-2 text-sm"
-                required
-              />
-              <CustomButton
-                type="submit"
-                disabled={uploading}
-                className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded"
-              >
-                {uploading ? 'Uploading...' : 'Submit'}
-              </CustomButton>
-            </form>
-            <div className="modal-action mt-4">
-              <form method="dialog">
-                <button className="btn">Close</button>
-              </form>
-            </div>
-          </div>
-        </dialog>
+      
+     {/* Modal */}
+{selectedSession && (
+  <dialog id="upload_modal" className="modal">
+    <div className="modal-box">
+      <h2 className="text-xl font-semibold text-center roboto text-[#422ad5] mb-4">Upload Materials</h2>
+      <form onSubmit={handleUpload} className="space-y-4">
+        <input
+          type="text"
+          value={selectedSession?._id || ''}
+          readOnly
+          className="w-full bg-gray-100 text-sm p-2 rounded border"
+        />
+        <input
+          type="text"
+          value={user?.email}
+          readOnly
+          className="w-full bg-gray-100 text-sm p-2 rounded border"
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setMaterial({ ...material, image: e.target.files[0] })}
+          className="w-full border rounded p-2 text-sm"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Google Drive Link"
+          value={material.link}
+          onChange={(e) => setMaterial({ ...material, link: e.target.value })}
+          className="w-full border rounded p-2 text-sm"
+          required
+        />
+        <CustomButton
+          type="submit"
+          disabled={uploading}
+          className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded"
+        >
+          {uploading ? 'Uploading...' : 'Submit'}
+        </CustomButton>
+      </form>
+    </div>
 
-      )}
+    {/* Clicking outside the modal will close it */}
+    <form method="dialog" className="modal-backdrop">
+      <button></button>
+    </form>
+  </dialog>
+)}
+
     </div>
   );
 };
