@@ -34,7 +34,7 @@ const Count = () => {
        ];
 
        return (
-              <div className='max-w-7xl mx-auto mt-16'>
+              <div className='max-w-7xl mx-auto mt-16 '>
 
                      <div className="text-center mt-10 mb-8">
                             <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] mb-3 roboto">
@@ -44,7 +44,7 @@ const Count = () => {
                                    We take pride in the growth of our study platform. Here’s a quick look at some of our key achievements that reflect the impact we're making in education.
                             </p>
                      </div>
-                     <div ref={ref} className='mb-24 border rounded-2xl bg-[#eeeeee] border-[#6b56e0	]  grid md:grid-cols-4 grid-cols-1 lg:gap-10'>
+                     <div ref={ref} className='mb-24 border rounded-2xl bg-gradient-to-br from-[#f7f9ff] via-[#f4f6ff] to-[#eef2ff] border-[#b4bdb266]  grid md:grid-cols-4 grid-cols-1 lg:gap-10'>
                             {stats.map((item, idx) => (
                                    <div key={idx} className='w-11/12 mx-auto p-10 text-center'>
                                           <div className="flex justify-center mb-3">

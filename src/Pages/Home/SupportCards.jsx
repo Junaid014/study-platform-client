@@ -67,13 +67,13 @@ export const ContactDetails = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-b from-white to-blue-50 rounded-xl shadow-lg max-w-4xl mx-auto px-6 py-10"
+      className="bg-gradient-to-b from-white to-blue-50 rounded-xl border  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#422ad5] mb-6 roboto">
         💬 Get in Touch With Us
       </h2>
 
-      <div className="flex justify-between flex-col lg:flex-row gap-8 text-gray-700 text-base md:text-lg">
+      <div className="flex justify-between flex-col lg:flex-row gap-8 text-gray-800 text-base md:text-lg">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <FaPhoneAlt className="text-[#e6504e]" />
@@ -115,29 +115,155 @@ export const ContactDetails = () => {
 
 
 // Feedback Form
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import { MdEmail, MdOutlineSubject, MdPhone, MdFeedback } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
+import CustomButton from '../Extra/CustomButton';
+
 export const FeedbackForm = () => {
+  const { user } = useAuth();
+  const [formData, setFormData] = useState({
+    email: user?.email || '',
+    name: user?.displayName || '',
+    phone: '',
+    subject: '',
+    message: '',
+    agree: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Thank you!',
+      text: 'Your feedback has been submitted.',
+      showConfirmButton: false,
+      timer: 2000,
+    });
+
+    setFormData({
+      email: user?.email || '',
+      name: user?.displayName || '',
+      phone: '',
+      subject: '',
+      message: '',
+      agree: false,
+    });
+  };
+
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h3 className="text-2xl font-semibold mb-6 text-center">Leave Us Your Feedback</h3>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <input type="email" placeholder="Email" className="input input-bordered w-full" required />
-        <input type="text" placeholder="Name" className="input input-bordered w-full" required />
-        <input type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
-        <input type="text" placeholder="Subject" className="input input-bordered w-full" required />
+    <div className='bg-gradient-to-br from-[#f7f9ff] via-[#f4f6ff] to-[#eef2ff] max-w-7xl mx-auto rounded-2xl'>
+<div className="max-w-4xl mx-auto px-4 py-10 mt-16 ">
+      <h3 className="text-4xl font-bold  text-center text-[#422ad5] mb-8 flex justify-center items-center gap-2">
+        <MdFeedback className="text-4xl mt-1" />
+        <p className=''> Leave Us Your Feedback</p>
+      </h3>
+
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up transition-all duration-500"
+      >
+        <div className="relative">
+          <MdEmail className="absolute top-3 left-3 text-gray-400" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            className="input focus:outline-none focus:ring-0 focus:border-gray-700 w-full pl-10"
+            required
+          />
+        </div>
+
+        <div className="relative">
+          <FaUser className="absolute top-3 left-3 text-gray-400" />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Name"
+            className="input focus:outline-none focus:ring-0 focus:border-gray-700 w-full pl-10"
+            required
+          />
+        </div>
+
+        <div className="relative">
+          <MdPhone className="absolute top-3 left-3 text-gray-400" />
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            className="input focus:outline-none focus:ring-0 focus:border-gray-700 w-full pl-10"
+            required
+          />
+        </div>
+
+        <div className="relative">
+          <MdOutlineSubject className="absolute top-3 left-3 text-gray-400" />
+          <input
+            type="text"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            placeholder="Subject"
+            className="input focus:outline-none focus:ring-0 focus:border-gray-700 w-full pl-10"
+            required
+          />
+        </div>
+
         <textarea
-          placeholder="Your message here"
+          name="message"
+          placeholder="Your message here..."
+          value={formData.message}
+          onChange={handleChange}
           rows={4}
           className="textarea textarea-bordered md:col-span-2 w-full"
           required
         ></textarea>
-        <div className="md:col-span-2 flex items-center gap-2">
-          <input type="checkbox" className="checkbox" required />
-          <span className="text-sm">I agree to the terms of data processing. <a href="#" className="text-blue-500 underline">Terms and Conditions</a></span>
+
+        <div className="md:col-span-2 flex items-start gap-2">
+          <input
+            type="checkbox"
+            name="agree"
+            checked={formData.agree}
+            onChange={handleChange}
+            className="checkbox mt-1"
+            required
+          />
+          <span className="text-sm mt-1.5 text-gray-600">
+            I agree to the terms of data processing.{' '}
+            <a href="#" className="text-blue-600 underline">Terms and Conditions</a>
+          </span>
         </div>
-        <div className="md:col-span-2">
-          <button className="btn bg-blue-600 text-white hover:bg-blue-700">Submit Feedback</button>
+
+        <div className="md:col-span-2 text-center">
+          <CustomButton
+            type="submit"
+            className="btn bg-gradient-to-r from-[#3d53eb] to-[#5969f3] text-white px-8 py-2 hover:shadow-xl"
+          >
+            Submit Feedback
+          </CustomButton>
         </div>
       </form>
     </div>
+
+    </div>
+    
   );
 };
+
