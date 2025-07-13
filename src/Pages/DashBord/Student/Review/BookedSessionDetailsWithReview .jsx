@@ -6,6 +6,7 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useAuth from '../../../../hooks/useAuth';
 import Loading from '../../../Extra/Loading';
 import { FaUser, FaClock, FaDollarSign, FaStar, FaCalendarAlt } from 'react-icons/fa';
+import CustomButton from '../../../Extra/CustomButton';
 
 const BookedSessionDetailsWithReview = () => {
   const { id } = useParams();
@@ -106,7 +107,7 @@ const BookedSessionDetailsWithReview = () => {
                 <option value="2">⭐️⭐️</option>
                 <option value="1">⭐️</option>
               </select>
-              <button type="submit" className="btn btn-primary w-full">Submit Review</button>
+              <CustomButton type="submit" className="btn  w-full">Submit Review</CustomButton>
             </form>
           ) : (
             <p className="text-green-600 mt-4 font-semibold">✅ You’ve already reviewed this session.</p>

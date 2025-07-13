@@ -10,6 +10,7 @@ const ApprovedStudySessions = () => {
   const axiosSecure = useAxiosSecure();
 
   const { data: approvedSessions = [], isLoading } = useQuery({
+    queryKey: ['approvedSessions'],
    queryFn: async () => {
   const res = await axiosSecure.get('/study-sessions/approved');
   const filtered = res.data
