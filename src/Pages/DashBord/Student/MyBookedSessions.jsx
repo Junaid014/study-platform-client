@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Loading from '../../Extra/Loading';
+import { Link } from 'react-router';
 
 
 const MyBookedSessions = () => {
@@ -20,21 +21,24 @@ const MyBookedSessions = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-2xl font-bold text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
+    <div className="max-w-4xl mx-auto px-9 py-10">
+      <h2 className="text-3xl font-bold text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
 
       {bookedSessions.length === 0 ? (
         <div className="text-center text-gray-500">You haven't booked any sessions yet.</div>
       ) : (
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 ">
           {bookedSessions.map((session) => (
-            <div key={session._id} className="border p-4 rounded shadow bg-white">
+            <div key={session._id} className="border border-blue-100 fade-slide-up hover:shadow-xl transition duration-300 p-4 rounded shadow bg-white">
               <img src={session.image} alt={session.title} className="w-full h-40 object-cover rounded mb-3" />
-              <h3 className="text-lg font-semibold">{session.title}</h3>
-              <p className="text-sm text-gray-600 mb-1">Tutor: {session.tutorName}</p>
-              <p className="text-sm text-gray-600 mb-1">Duration: {session.duration}</p>
-              <p className="text-sm text-gray-600 mb-1">Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}</p>
+              <div className='text-start roboto px-3'>
+                <h3 className="text-lg font-semibold">Title: {session.title}</h3>
+              <p className=" text-gray-700 mb-1">Tutor: {session.tutorName}</p>
+              <p className="text-sm text-gray-700 mb-1">Duration: {session.duration}</p>
+              <p className="text-sm text-gray-700 mb-1">Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}</p>
               <p className="text-sm text-gray-500 mt-2">{session.description.slice(0, 100)}...</p>
+              <Link to={`/myBookedSessions/details/${session._id}`} className='underline text-blue-500'>Show Details</Link>
+              </div>
             </div>
           ))}
         </div>

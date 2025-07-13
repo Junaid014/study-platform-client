@@ -22,6 +22,7 @@ import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
 import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
 import Payment from "../Pages/DashBord/Payment/Payment";
 import MyBookedSessions from "../Pages/DashBord/Student/MyBookedSessions";
+import BookedSessionDetailsWithReview from "../Pages/DashBord/Student/Review/BookedSessionDetailsWithReview ";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,12 @@ export const router = createBrowserRouter([
         path:'/sessions/:id',
         element:<DetailsStudySessions/>
       },
+      
+        {
+  path: 'myBookedSessions/details/:id',
+  element: <BookedSessionDetailsWithReview />,
+},
+      
       {
         path:'forbidden',
         Component:Forbidden

@@ -107,7 +107,7 @@ const DetailsStudySessions = () => {
   </CustomButton>
 ) : session.bookedStudents?.includes(user.email) ? (
   <button
-    className="bg-green-500 text-white px-6 py-2 rounded-md cursor-not-allowed"
+    className="bg-green-500 text-white px-4  roboto py-2 rounded-md cursor-not-allowed"
     disabled
   >
     Already Booked
