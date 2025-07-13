@@ -49,7 +49,7 @@ const ApprovedStudySessions = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-semibold text-center roboto mb-10">Available Study Sessions</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] text-center roboto mb-10">Available Study Sessions</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
         {ongoingSessions.map((session, index) => (

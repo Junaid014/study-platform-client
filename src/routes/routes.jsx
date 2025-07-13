@@ -20,6 +20,7 @@ import AdminRoute from "../Provider/AdminRoute";
 import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin";
 import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
 import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
+import Payment from "../Pages/DashBord/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         path:'forbidden',
         Component:Forbidden
       },
+      {
+  path: 'payment/:id',
+  Component: Payment
+}
       
 ]
   },

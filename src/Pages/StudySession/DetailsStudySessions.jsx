@@ -83,7 +83,6 @@ const DetailsStudySessions = () => {
           </div>
 
           <p className="text-gray-800 text-start roboto leading-relaxed mb-6">{session.description}</p>
-
 {/* Booking Button Logic */}
 {isRegistrationClosed(session.registrationEnd) ? (
   <button className="bg-gray-400 text-white px-6 py-2 rounded-md cursor-not-allowed" disabled>
@@ -93,11 +92,11 @@ const DetailsStudySessions = () => {
   <CustomButton
     onClick={() => {
       toast.info('Please log in to book this session');
-      setTimeout(() => navigate('/auth/login',{ state: location.pathname }), 1000); // Redirect after 1.5s
+      setTimeout(() => navigate('/auth/login', { state: location.pathname }), 1000);
     }}
     className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md"
   >
-    Book Now 
+    Book Now
   </CustomButton>
 ) : role !== 'student' ? (
   <CustomButton
@@ -106,9 +105,39 @@ const DetailsStudySessions = () => {
   >
     Book Now
   </CustomButton>
+) : session.bookedStudents?.includes(user.email) ? (
+  <button
+    className="bg-green-500 text-white px-6 py-2 rounded-md cursor-not-allowed"
+    disabled
+  >
+    Already Booked
+  </button>
 ) : (
-  <CustomButton className='flex justify-start'>Book Now</CustomButton>
+  <CustomButton
+    onClick={async () => {
+      if (session.fee === '0') {
+        try {
+          await axiosInstance.post('/payments', {
+            sessionId: session._id,
+            studentEmail: user.email,
+            transactionId: 'FREE_BOOKING_' + new Date().getTime(),
+            fee: 0,
+          });
+          toast.success('Free session booked successfully');
+        } catch (error) {
+          console.error(error);
+          toast.error('Failed to book session');
+        }
+      } else {
+        navigate(`/payment/${session._id}`);
+      }
+    }}
+    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md"
+  >
+    Book Now
+  </CustomButton>
 )}
+
 
 
 

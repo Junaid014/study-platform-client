@@ -25,6 +25,8 @@ const supportData = [
 ];
 
 export const SupportCards = () => {
+    const ref = useRef(null);
+          const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
     <div className="py-20 px-4 max-w-7xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#422ad5] roboto">
@@ -33,8 +35,7 @@ export const SupportCards = () => {
 
       <div className="grid md:grid-cols-3 gap-10">
         {supportData.map((card, index) => {
-          const ref = useRef(null);
-          const isInView = useInView(ref, { once: true, margin: "-100px" });
+        
 
           return (
             <motion.div
