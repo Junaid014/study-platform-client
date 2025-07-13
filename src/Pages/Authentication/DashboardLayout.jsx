@@ -54,6 +54,16 @@ const DashboardLayout = () => {
                                           <span className="text-2xl  text-primary font-extrabold">EduSync</span>
                                    </Link>
 
+
+                                   {/* student route */}
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/dashboard/myBookedSessions" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaBook className="text-[#3d53eb]" /> My Booked Sessions
+                                          </NavLink>
+                                   </li>
+
+
                                    {/* tutor route */}
 
                                    <li className="font-medium text-black border border-dashed border-gray-300">
@@ -63,16 +73,16 @@ const DashboardLayout = () => {
                                    </li>
 
                                    <li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
-  <NavLink to="/dashboard/myStudySessions" className="flex items-center gap-2 px-2 py-1">
-    <FaBook className="text-[#3d53eb]" /> My Study Sessions
-  </NavLink>
-</li>
+                                          <NavLink to="/dashboard/myStudySessions" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaBook className="text-[#3d53eb]" /> My Study Sessions
+                                          </NavLink>
+                                   </li>
 
-<li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
-  <NavLink to="/dashboard/myMaterials" className="flex items-center gap-2 px-2 py-1">
-    <FaFolderOpen className="text-[#3d53eb]" /> View Materials
-  </NavLink>
-</li>
+                                   <li className="font-medium text-black border border-dashed border-gray-300 hover:bg-gray-100 transition duration-200 rounded-md">
+                                          <NavLink to="/dashboard/myMaterials" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaFolderOpen className="text-[#3d53eb]" /> View Materials
+                                          </NavLink>
+                                   </li>
 
 
                                    {/* Admin route  */}

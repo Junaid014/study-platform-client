@@ -21,6 +21,7 @@ import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin
 import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
 import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
 import Payment from "../Pages/DashBord/Payment/Payment";
+import MyBookedSessions from "../Pages/DashBord/Student/MyBookedSessions";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
       {
         path:'myMaterials',
         Component:MyMaterials
+      },
+      {
+        path:'myBookedSessions',
+        Component:MyBookedSessions
       }
     ]
   }
