@@ -16,6 +16,7 @@ const DetailsStudySessions = () => {
   const { role, roleLoading } = useUserRole();
   const navigate = useNavigate();
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [isBooked, setIsBooked] = useState(false);
 
   const { data: session, isLoading, error } = useQuery({
     queryKey: ['studySession', id],
@@ -89,66 +90,71 @@ const DetailsStudySessions = () => {
             </div>
           </div>
 
-          <p className="text-gray-800 text-start roboto leading-relaxed mb-6">{session.description}</p>
+          <p className="text-gray-800 text-start roboto leading-relaxed  border-b pb-6 border-b-gray-300 border-dashed mb-6">{session.description}</p>
 
           {/* Booking Button Logic */}
-          {isRegistrationClosed(session.registrationEnd) ? (
-            <button className="bg-gray-400 text-white px-6 py-2 rounded-md cursor-not-allowed" disabled>
-              Registration Closed
-            </button>
-          ) : !user ? (
-            <CustomButton
-              onClick={() => {
-                toast.info('Please log in to book this session');
-                setTimeout(() => navigate('/auth/login', { state: location.pathname }), 1000);
-              }}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md"
-            >
-              Book Now
-            </CustomButton>
-          ) : role !== 'student' ? (
-            <CustomButton
-              onClick={() => toast.warning('Only students can book sessions')}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md"
-            >
-              Book Now
-            </CustomButton>
-          ) : session.bookedStudents?.includes(user.email) ? (
-            <button
-              className="bg-green-500 text-white px-4 roboto py-2 rounded-md cursor-not-allowed"
-              disabled
-            >
-              Already Booked
-            </button>
-          ) : (
-            <CustomButton
-              onClick={async () => {
-                if (session.fee === '0') {
-                  try {
-                    await axiosInstance.post('/payments', {
-                      sessionId: session._id,
-                      studentEmail: user.email,
-                      transactionId: 'FREE_BOOKING_' + new Date().getTime(),
-                      fee: 0,
-                    });
-                    toast.success('Free session booked successfully');
-                  } catch (error) {
-                    console.error(error);
-                    toast.error('Failed to book session');
-                  }
-                } else {
-                  navigate(`/payment/${session._id}`);
-                }
-              }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md"
-            >
-              Book Now
-            </CustomButton>
-          )}
+         
+
+{isRegistrationClosed(session.registrationEnd) ? (
+  <button className="bg-gray-400 text-white px-6 py-2 rounded-md cursor-not-allowed" disabled>
+    Registration Closed
+  </button>
+) : !user ? (
+  <CustomButton
+    onClick={() => {
+      toast.info('Please log in to book this session');
+      setTimeout(() => navigate('/auth/login', { state: location.pathname }), 1000);
+    }}
+    className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md"
+  >
+    Book Now
+  </CustomButton>
+) : role !== 'student' ? (
+  <CustomButton
+    onClick={() => toast.warning('Only students can book sessions')}
+    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md"
+  >
+    Book Now
+  </CustomButton>
+) : isBooked || session.bookedStudents?.includes(user.email) ? (
+  <button
+    className="bg-green-500 flex justify-start text-white px-4 roboto py-2 rounded-md cursor-not-allowed"
+    disabled
+  >
+    Already Booked
+  </button>
+) : (
+  <CustomButton
+    onClick={async () => {
+      if (session.fee === '0') {
+        try {
+          await axiosInstance.post('/payments', {
+            sessionId: session._id,
+            studentEmail: user.email,
+            transactionId: 'FREE_BOOKING_' + new Date().getTime(),
+            fee: 0,
+          });
+          toast.success('Free session booked successfully');
+          setIsBooked(true); 
+          setTimeout(() => navigate(`/dashboard/myBookedSessions`), 1000); 
+        } catch (error) {
+          console.error(error);
+          toast.error('Failed to book session');
+        }
+      } else {
+        navigate(`/payment/${session._id}`);
+      }
+    }}
+    className="bg-blue-600 hover:bg-blue-700 flex justify-start text-white px-6 py-2 rounded-md"
+  >
+    Book Now
+  </CustomButton>
+)}
+
 
           {/* ✅ Review Section */}
           <div className="mt-10">
-            <h3 className="text-xl font-semibold text-left roboto  mb-4">Reviews :</h3>
+            <h3 className="text-xl font-semibold text-left roboto border-t border-t-gray-300 border-dashed pt-4 mb-4">Reviews :</h3>
             {session.reviews?.length ? (
               <>
                 <div className="space-y-4">
@@ -194,7 +200,7 @@ const DetailsStudySessions = () => {
                 )}
               </>
             ) : (
-              <p className="text-gray-500 text-sm">No reviews yet.</p>
+              <p className="text-gray-600 roboto text-sm text-start">No reviews yet.</p>
             )}
           </div>
         </div>

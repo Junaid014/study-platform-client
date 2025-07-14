@@ -119,7 +119,7 @@ export const router = createBrowserRouter([
         Component: MyBookedSessions
       },
       {
-        path: 'student-notes',
+        path: 'createNotes',
         element: <StudentNotesForm />,
       },
       {

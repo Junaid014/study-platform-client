@@ -5,6 +5,7 @@ import Loading from '../../Extra/Loading';
 import Swal from 'sweetalert2';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { useState } from 'react';
+import EmptyState from '../../Extra/EmptyState ';
 
 const ManageNotes = () => {
        const axiosSecure = useAxiosSecure();
@@ -55,6 +56,14 @@ const ManageNotes = () => {
               <div className="min-h-screen bg-gradient-to-b from-[#e0e7ff] mt-6 lg:mt-0 to-[#f5f5f5] px-10 ml-16 py-10">
                      <div className="max-w-5xl mx-auto">
                             <h2 className="text-4xl font-bold text-[#422ad5] text-center mb-10">📝 Manage Your Personal Notes</h2>
+
+                            {notes.length === 0 && (
+                                   <EmptyState
+                                          icon="file"
+                                          title="No Notes Uploaded Yet"
+                                          message="You haven’t uploaded any notes yet."
+                                   />
+                            )}
                             <div className="grid md:grid-cols-2 gap-8">
                                    {notes.map((note) => (
                                           <div
@@ -90,7 +99,7 @@ const ManageNotes = () => {
                                                         <>
                                                                <div className='flex items-center justify-center gap-1.5'>
                                                                       <h3 className="text-sm font-semibold text-gray-500">Title:</h3>
-                                                               <p className="text-lg font-bold text-gray-800">{note.title}</p>
+                                                                      <p className="text-lg font-bold text-gray-800">{note.title}</p>
                                                                </div>
                                                                <h4 className="text-sm font-semibold text-gray-600 mt-4 mb-1">Description:</h4>
                                                                <p className="text-gray-700">{note.description}</p>
@@ -101,8 +110,8 @@ const ManageNotes = () => {
                                                                              className="flex items-center gap-1.5"
                                                                              title="Edit"
                                                                       >
-                                                                              <span className='underline text-blue-400'>Edit:</span> <span className='text-blue-500 cursor-pointer hover:text-red-blue text-lg'><FaEdit /></span>
-                                                                             
+                                                                             <span className='underline text-blue-400'>Edit:</span> <span className='text-blue-500 cursor-pointer hover:text-red-blue text-lg'><FaEdit /></span>
+
                                                                       </button>
                                                                       <button
                                                                              onClick={() => {

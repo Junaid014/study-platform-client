@@ -149,8 +149,8 @@ const Navbar = () => {
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-44 w-64 py-4 bg-white rounded-md shadow-lg border border-gray-200 z-50">
-                    <div className="p-3 border-b border-gray-100 text-gray-700 font-semibold">
+                  <div className="absolute right-0 mt-12 w-64 py-4 bg-white rounded-md shadow-lg border border-gray-200 z-50">
+                    <div className="p-3 border-b text-start border-gray-100 text-gray-700 font-semibold">
                       {user.displayName}
                     </div>
                     <div className=''>

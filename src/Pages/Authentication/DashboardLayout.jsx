@@ -64,7 +64,7 @@ const DashboardLayout = () => {
                                    </li>
 
                                    <li className="font-medium text-black border border-dashed border-gray-300">
-                                          <NavLink to="/dashboard/student-notes" className="flex items-center gap-2 px-2 py-1">
+                                          <NavLink to="/dashboard/createNotes" className="flex items-center gap-2 px-2 py-1">
                                                  <FaRegStickyNote className="text-[#3d53eb]" /> Create Note
                                           </NavLink>
                                    </li>
