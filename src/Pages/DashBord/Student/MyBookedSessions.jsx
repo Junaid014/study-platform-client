@@ -33,11 +33,19 @@ const MyBookedSessions = () => {
               <img src={session.image} alt={session.title} className="w-full h-40 object-cover rounded mb-3" />
               <div className='text-start roboto px-3'>
                 <h3 className="text-lg font-semibold">Title: {session.title}</h3>
-              <p className=" text-gray-700 mb-1">Tutor: {session.tutorName}</p>
-              <p className="text-sm text-gray-700 mb-1">Duration: {session.duration}</p>
-              <p className="text-sm text-gray-700 mb-1">Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}</p>
-              <p className="text-sm text-gray-500 mt-2">{session.description.slice(0, 100)}...</p>
-              <Link to={`/myBookedSessions/details/${session._id}`} className='underline text-blue-500'>Show Details</Link>
+                <p className=" text-gray-700 mb-1">Tutor: {session.tutorName}</p>
+                <p className="text-sm text-gray-700 mb-1">Duration: {session.duration}</p>
+                <p className="text-sm text-gray-700 mb-1">Fee: {session.fee === '0' ? 'Free' : `$${session.fee}`}</p>
+                <p className="text-sm text-gray-500 mt-2">{session.description.slice(0, 100)}...</p>
+                <div className='flex justify-between items-center'>
+                  <Link to={`/myBookedSessions/details/${session._id}`} className='underline text-blue-500'>Show Details</Link>
+                <Link
+                  to={`/myBookedSessions/materials/${session._id}`}
+                  className="underline text-green-600 block mt-1"
+                >
+                  View Materials
+                </Link>
+                </div>
               </div>
             </div>
           ))}

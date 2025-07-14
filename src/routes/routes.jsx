@@ -23,6 +23,7 @@ import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
 import Payment from "../Pages/DashBord/Payment/Payment";
 import MyBookedSessions from "../Pages/DashBord/Student/MyBookedSessions";
 import BookedSessionDetailsWithReview from "../Pages/DashBord/Student/Review/BookedSessionDetailsWithReview ";
+import BookedSessionMaterials from "../Pages/DashBord/Student/BookedSessionMaterials ";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
         {
   path: 'myBookedSessions/details/:id',
   element: <BookedSessionDetailsWithReview />,
+},
+{
+  path: '/myBookedSessions/materials/:id',
+  element: <BookedSessionMaterials />,
 },
       
       {
