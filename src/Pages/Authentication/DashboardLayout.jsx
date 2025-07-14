@@ -1,7 +1,7 @@
 import React from 'react';
 import { GiGraduateCap } from 'react-icons/gi';
 import { Link, NavLink, Outlet } from 'react-router';
-import { FaBook, FaCheckCircle, FaClock, FaFolderOpen, FaPlusCircle, FaUserShield } from "react-icons/fa";
+import { FaBook, FaCheckCircle, FaClock, FaFolderOpen, FaPlusCircle, FaRegStickyNote, FaStickyNote, FaUserShield } from "react-icons/fa";
 import useUserRole from '../../hooks/useUserRole';
 
 
@@ -17,7 +17,7 @@ const DashboardLayout = () => {
                      <div className="drawer-content flex flex-col">
 
                             {/* Navbar */}
-                            <div className="navbar bg-base-300 w-full lg:hidden">
+                            <div className="navbar bg-[#e4e6fe] w-full lg:hidden">
                                    <div className="flex-none ">
                                           <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
                                                  <svg
@@ -62,6 +62,21 @@ const DashboardLayout = () => {
                                                  <FaBook className="text-[#3d53eb]" /> My Booked Sessions
                                           </NavLink>
                                    </li>
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/dashboard/student-notes" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaRegStickyNote className="text-[#3d53eb]" /> Create Note
+                                          </NavLink>
+                                   </li>
+
+
+
+                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                          <NavLink to="/dashboard/manageNotes" className="flex items-center gap-2 px-2 py-1">
+                                                 <FaStickyNote className="text-[#3d53eb]" /> Manage Notes
+                                          </NavLink>
+                                   </li>
+
 
 
                                    {/* tutor route */}

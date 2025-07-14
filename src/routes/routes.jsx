@@ -24,11 +24,13 @@ import Payment from "../Pages/DashBord/Payment/Payment";
 import MyBookedSessions from "../Pages/DashBord/Student/MyBookedSessions";
 import BookedSessionDetailsWithReview from "../Pages/DashBord/Student/Review/BookedSessionDetailsWithReview ";
 import BookedSessionMaterials from "../Pages/DashBord/Student/BookedSessionMaterials ";
+import StudentNotesForm from "../Pages/DashBord/Student/StudentNotesForm ";
+import ManageNotes from "../Pages/DashBord/Student/ManageNotes ";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component:Root,
+    Component: Root,
     children: [
       {
         path: '/',
@@ -36,41 +38,41 @@ export const router = createBrowserRouter([
         Component: Home
       },
       {
-        path:'/createSession',
-        element: <PrivetRoute><CreateStudySession/></PrivetRoute>
+        path: '/createSession',
+        element: <PrivetRoute><CreateStudySession /></PrivetRoute>
       },
       {
-        path:'approvedSession',
-        Component:ApprovedStudySessions
+        path: 'approvedSession',
+        Component: ApprovedStudySessions
       },
       {
-        path:'allStudySession',
-        Component:AllStudySessions
+        path: 'allStudySession',
+        Component: AllStudySessions
       },
       {
-        path:'/sessions/:id',
-        element:<DetailsStudySessions/>
+        path: '/sessions/:id',
+        element: <DetailsStudySessions />
       },
-      
-        {
-  path: 'myBookedSessions/details/:id',
-  element: <BookedSessionDetailsWithReview />,
-},
-{
-  path: '/myBookedSessions/materials/:id',
-  element: <BookedSessionMaterials />,
-},
-      
+
       {
-        path:'forbidden',
-        Component:Forbidden
+        path: 'myBookedSessions/details/:id',
+        element: <BookedSessionDetailsWithReview />,
       },
       {
-  path: 'payment/:id',
-  Component: Payment
-}
-      
-]
+        path: '/myBookedSessions/materials/:id',
+        element: <BookedSessionMaterials />,
+      },
+
+      {
+        path: 'forbidden',
+        Component: Forbidden
+      },
+      {
+        path: 'payment/:id',
+        Component: Payment
+      }
+
+    ]
   },
   {
     path: "/auth",
@@ -87,32 +89,43 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path:'/dashboard',
-    element:<PrivetRoute><DashboardLayout/></PrivetRoute>,
-    children:[
+    path: '/dashboard',
+    element: <PrivetRoute><DashboardLayout /></PrivetRoute>,
+    children: [
       {
-        path:'pendingStudySession',
-        element:<AdminRoute><PendingStudySessions/></AdminRoute>
+        path: 'pendingStudySession',
+        element: <AdminRoute><PendingStudySessions /></AdminRoute>
       },
       {
-        path:'makeAdmin',
-        element: <AdminRoute> <MakeAdmin/> </AdminRoute> 
+        path: 'makeAdmin',
+        element: <AdminRoute> <MakeAdmin /> </AdminRoute>
       },
       {
         path: 'approvedSessionAdmin',
-        element:<AdminRoute> <ApprovedSessionsAdmin/> </AdminRoute>
+        element: <AdminRoute> <ApprovedSessionsAdmin /> </AdminRoute>
+      },
+      // tutor
+      {
+        path: 'myStudySessions',
+        Component: MyStudySessions
       },
       {
-        path:'myStudySessions',
-        Component:MyStudySessions
+        path: 'myMaterials',
+        Component: MyMaterials
+      },
+      // student
+      {
+        path: 'myBookedSessions',
+        Component: MyBookedSessions
       },
       {
-        path:'myMaterials',
-        Component:MyMaterials
+        path: 'student-notes',
+        element: <StudentNotesForm />,
       },
       {
-        path:'myBookedSessions',
-        Component:MyBookedSessions
+    path: 'manageNotes',
+    element:<ManageNotes/>
+
       }
     ]
   }
