@@ -40,7 +40,7 @@ const EduSlider = () => {
               className="w-full h-[700px] bg-no-repeat bg-cover bg-center relative flex items-center px-6 md:px-20"
               style={{
                 backgroundImage: `
-                  linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),
+                  linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)),
                   url(${slide.image})
                 `,
               }}

@@ -93,7 +93,7 @@ const SignUp = () => {
         };
 
         try {
-          await axiosSecure.post('/users', userInfo);
+          await axiosInstance.post('/users', userInfo);
         } catch (err) {
           console.error('Google user DB save failed:', err);
         }
@@ -107,7 +107,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className='bg-[#e2edff] min-h-screen md:flex items-center justify-between'>
+    <div className='bg-[#e2edff] min-h-screen md:flex items-center mt-16 lg:pt-0  pt-7 lg:mt-0 justify-between'>
       <div className='w-full h-full'>
         <DotLottieReact
           className='w-full h-full md:flex hidden'

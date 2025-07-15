@@ -6,6 +6,8 @@ import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import useAxios from '../../hooks/useAxios';
+// import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
 
 const Login = () => {
   const { LogInUser, sighInWithGoogle, setUser } = useAuth();
@@ -61,13 +63,18 @@ const Login = () => {
   };
 
   return (
-    <div className='bg-gradient-to-r from-blue-50 via-white to-sky-100 min-h-screen md:flex items-center justify-between'>
+    <div className='bg-gradient-to-r from-blue-50 via-white mt-16 pt-7 to-sky-100 min-h-screen md:flex items-center justify-center'>
       {/* Lottie */}
-      <div className='w-full h-full'>
-       
+      <div className='w-full md:flex hidden h-full'>
+       <DotLottieReact
+      src="https://lottie.host/ec3fabc0-35f6-4959-b502-c61adc3c0dd1/fTApTdWokr.lottie"
+      loop
+      autoplay
+    />
       </div>
 
       {/* Login Form */}
+
       <div className="md:w-1/2 lg:mr-16 md:ml-24">
         <div className="flex mt-4 justify-center items-center">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl pt-6 px-2">

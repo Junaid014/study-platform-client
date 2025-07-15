@@ -40,7 +40,7 @@ const BookedSessionMaterials = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold text-[#422ad5] text-center mb-6">📂 Session Materials</h2>
+      <h2 className="text-3xl font-bold text-[#422ad5] text-center mt-6 mb-6">📂 Session Materials</h2>
 
       {materials.length === 0 ? (
         <EmptyState

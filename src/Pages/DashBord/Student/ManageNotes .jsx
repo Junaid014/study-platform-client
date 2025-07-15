@@ -97,8 +97,8 @@ const ManageNotes = () => {
                                                         </form>
                                                  ) : (
                                                         <>
-                                                               <div className='flex items-center justify-center gap-1.5'>
-                                                                      <h3 className="text-sm font-semibold text-gray-500">Title:</h3>
+                                                               <div className='flex items-center  gap-1.5'>
+                                                                      <h3 className=" mt-1 font-semibold text-gray-500">Title:</h3>
                                                                       <p className="text-lg font-bold text-gray-800">{note.title}</p>
                                                                </div>
                                                                <h4 className="text-sm font-semibold text-gray-600 mt-4 mb-1">Description:</h4>
@@ -110,7 +110,7 @@ const ManageNotes = () => {
                                                                              className="flex items-center gap-1.5"
                                                                              title="Edit"
                                                                       >
-                                                                             <span className='underline text-blue-400'>Edit:</span> <span className='text-blue-500 cursor-pointer hover:text-red-blue text-lg'><FaEdit /></span>
+                                                                             <span className='underline mt-0.5 text-blue-400'>Edit:</span> <span className='text-blue-500 cursor-pointer hover:text-red-blue text-lg'><FaEdit /></span>
 
                                                                       </button>
                                                                       <button

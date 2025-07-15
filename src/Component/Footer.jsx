@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t  border-blue-300 mt-10 pt-4 text-center text-blue-100 text-sm">
+      <div className="border-t  border-blue-300 mt-10 pb-11 lg:mx-44 pt-4 text-center text-blue-100 text-sm">
         &copy; {new Date().getFullYear()} EduSync. All rights reserved.
       </div>
     </footer>

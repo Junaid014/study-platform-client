@@ -36,7 +36,7 @@ const MyBookedSessions = () => {
   {bookedSessions.map((session) => (
     <div
       key={session._id}
-      className="flex flex-col h-full border roboto border-blue-100 fade-slide-up hover:shadow-xl transition duration-300 p-4 rounded shadow bg-white px-3"
+      className="flex px-6 flex-col h-full border roboto border-blue-100 fade-slide-up hover:shadow-xl transition duration-300 p-4 rounded shadow bg-white"
     >
       <img
         src={session.image}

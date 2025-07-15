@@ -1,21 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import Loading from '../../Extra/Loading';
 import EmptyState from '../../Extra/EmptyState ';
+import { useEffect, useRef } from 'react';
+
 
 const ApprovedSessionsAdmin = () => {
   const axiosSecure = useAxiosSecure();
+  const [editingSession, setEditingSession] = useState(null);
+const [newFee, setNewFee] = useState('');
+const modalRef = useRef();
 
+useEffect(() => {
+  if (editingSession) {
+    setTimeout(() => {
+      document.getElementById('fee_input')?.focus();
+    }, 100); // slight delay ensures it's mounted
+  }
+}, [editingSession]);
   const { data: approvedSessions = [], refetch, isLoading } = useQuery({
     queryKey: ['approvedAdminSessions'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/study-sessions/approved');
+      const res = await axiosSecure.get('/admin/study-sessions/approved');
       return res.data;
     },
   });
+
+  const handleEdit = (session) => {
+  setEditingSession(session);
+  setNewFee(session.fee || '');
+  document.getElementById('edit_modal')?.showModal();
+};
+
+const submitEdit = async (e) => {
+  e.preventDefault();
+  if (!newFee || isNaN(newFee) || newFee < 0) {
+    return Swal.fire('Invalid Fee', 'Please enter a valid fee amount', 'warning');
+  }
+
+  try {
+    const res = await axiosSecure.patch(`/study-sessions/${editingSession._id}`, {
+      fee: newFee,
+    });
+
+    if (res.data.success) {
+      Swal.fire('Updated!', 'Fee updated successfully.', 'success');
+      refetch();
+      setEditingSession(null);
+      setNewFee('');
+    } else {
+      Swal.fire('Error', res.data.message || 'Update failed', 'error');
+    }
+  } catch (error) {
+    console.error(error);
+    Swal.fire('Error', 'Something went wrong', 'error');
+  }
+};
+
 
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
@@ -84,12 +128,12 @@ const ApprovedSessionsAdmin = () => {
                     <FaTrashAlt size={18} />
                   </button>
                   <button
-                    onClick={() => console.log('Edit clicked:', session._id)}
-                    className="text-blue-600 pt-2.5 cursor-pointer hover:text-blue-800 tooltip"
-                    title="Update"
-                  >
-                    <FaEdit size={18} />
-                  </button>
+  onClick={() => handleEdit(session)}
+  className="text-blue-600 pt-2.5 cursor-pointer hover:text-blue-800 tooltip"
+  title="Update Fee"
+>
+  <FaEdit size={18} />
+</button>
                 </td>
               </tr>
             ))}
@@ -104,6 +148,38 @@ const ApprovedSessionsAdmin = () => {
   />
         )}
       </div>
+
+      {editingSession && (
+  <dialog id="edit_modal" className="modal" ref={modalRef}>
+  <div className="modal-box">
+    <h2 className="text-xl font-semibold mb-4 text-center text-[#422ad5]">Edit Fee</h2>
+
+    <form onSubmit={submitEdit} className="space-y-4">
+      <input
+        id="fee_input"
+        type="number"
+        className="w-full border rounded p-2"
+        value={newFee}
+        onChange={(e) => setNewFee(e.target.value)}
+        required
+      />
+
+      <button
+        type="submit"
+        className="px-4 py-2 rounded cursor-pointer bg-blue-500 hover:bg-blue-600 text-white text-sm"
+      >
+        Update Fee
+      </button>
+    </form>
+  </div>
+
+  <form method="dialog" className="modal-backdrop">
+    <button>Close</button>
+  </form>
+</dialog>
+
+)}
+
     </div>
   );
 };

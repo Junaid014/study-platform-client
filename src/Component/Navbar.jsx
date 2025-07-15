@@ -49,7 +49,7 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#3B82F6] underline'
+              ? 'text-[#422ad5] underline'
               : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
           }
         >
@@ -61,8 +61,8 @@ const Navbar = () => {
           to="/allStudySession"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#3B82F6] underline'
-              : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
+              ? 'text-[#422ad5] underline'
+              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
           }
         >
           All Study Sessions
@@ -73,8 +73,8 @@ const Navbar = () => {
           to="/createSession"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#3B82F6] underline'
-              : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
+              ? 'text-[#422ad5] underline'
+              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
           }
         >
           Create Session
@@ -85,8 +85,8 @@ const Navbar = () => {
           to="/dashboard"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#3B82F6] underline'
-              : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
+              ? 'text-[#422ad5] underline'
+              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
           }
         >
           DashBoard

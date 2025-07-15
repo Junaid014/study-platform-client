@@ -29,11 +29,13 @@ import StudentNotesForm from "../Pages/DashBord/Student/StudentNotesForm ";
 import ManageNotes from "../Pages/DashBord/Student/ManageNotes ";
 import ManageMaterials from "../Pages/DashBord/Admin/ManageMaterials";
 import StudentRoute from "../Provider/StudentRoute";
+import ErrorElement from "../Pages/Extra/ErrorElement";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorElement />,
     children: [
       {
         path: '/',
