@@ -23,7 +23,7 @@ const MyBookedSessions = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-9 py-10">
-      <h2 className="text-3xl font-bold text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
+      <h2 className="text-3xl font-bold mt-5 text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
 
       {bookedSessions.length === 0 ? (
         <EmptyState

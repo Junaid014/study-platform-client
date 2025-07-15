@@ -38,7 +38,7 @@ const ManageMaterials = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
-      <h2 className="text-3xl font-bold text-center text-[#422ad5] mb-6">📁 All Uploaded Materials</h2>
+      <h2 className="text-3xl font-bold text-center mt-10 text-[#422ad5] mb-6">📁 All Uploaded Materials</h2>
       {materials.length === 0 ? (
         <p className="text-center text-gray-500">No materials found.</p>
       ) : (

@@ -12,7 +12,7 @@ const DashboardLayout = () => {
        console.log(role);
 
        return (
-              <div className="drawer lg:drawer-open ">
+              <div className="drawer lg:drawer-open w-11/12 mx-auto mt-8.5">
 
                      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                      <div className="drawer-content w-full flex flex-col">
@@ -62,7 +62,10 @@ const DashboardLayout = () => {
 
                                    {/* student route */}
 
-                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                   {
+                                          !roleLoading && role ==='student' && 
+                                          <>
+                                          <li className="font-medium text-black border border-dashed border-gray-300">
                                           <NavLink to="/dashboard/myBookedSessions" className="flex items-center gap-2 px-2 py-1">
                                                  <FaBook className="text-[#3d53eb]" /> My Booked Sessions
                                           </NavLink>
@@ -82,11 +85,16 @@ const DashboardLayout = () => {
                                           </NavLink>
                                    </li>
 
+                                          </>
+                                   }
 
 
                                    {/* tutor route */}
 
-                                   <li className="font-medium text-black border border-dashed border-gray-300">
+                                   {
+                                          !roleLoading && role === 'tutor' && 
+                                          <>
+                                          <li className="font-medium text-black border border-dashed border-gray-300">
                                           <NavLink to="/createSession" className="flex items-center gap-2 px-2 py-1">
                                                  <FaPlusCircle className="text-[#3d53eb]" /> Create Study Session
                                           </NavLink>
@@ -103,6 +111,8 @@ const DashboardLayout = () => {
                                                  <FaFolderOpen className="text-[#3d53eb]" /> View Materials
                                           </NavLink>
                                    </li>
+                                          </>
+                                   }
 
 
                                    {/* Admin route  */}

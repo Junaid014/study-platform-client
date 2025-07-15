@@ -17,6 +17,7 @@ import DetailsStudySessions from "../Pages/StudySession/DetailsStudySessions";
 import Forbidden from "../Pages/Extra/Forbidden";
 import MakeAdmin from "../Pages/DashBord/Admin/MakeAdmin";
 import AdminRoute from "../Provider/AdminRoute";
+import TutorRoute from "../Provider/TutorRoute";
 import ApprovedSessionsAdmin from "../Pages/DashBord/Admin/ApprovedSessionsAdmin";
 import MyStudySessions from "../Pages/DashBord/Tutor/MyStudySessions";
 import MyMaterials from "../Pages/DashBord/Tutor/MyMaterials";
@@ -27,6 +28,7 @@ import BookedSessionMaterials from "../Pages/DashBord/Student/BookedSessionMater
 import StudentNotesForm from "../Pages/DashBord/Student/StudentNotesForm ";
 import ManageNotes from "../Pages/DashBord/Student/ManageNotes ";
 import ManageMaterials from "../Pages/DashBord/Admin/ManageMaterials";
+import StudentRoute from "../Provider/StudentRoute";
 
 export const router = createBrowserRouter([
   {
@@ -106,30 +108,30 @@ export const router = createBrowserRouter([
         element: <AdminRoute> <ApprovedSessionsAdmin /> </AdminRoute>
       },
       {
-        path:'manageMaterials',
-        element:<AdminRoute><ManageMaterials/></AdminRoute>
+        path: 'manageMaterials',
+        element: <AdminRoute><ManageMaterials /></AdminRoute>
       },
       // tutor
       {
         path: 'myStudySessions',
-        Component: MyStudySessions
+        element: <TutorRoute><MyStudySessions /></TutorRoute>
       },
       {
         path: 'myMaterials',
-        Component: MyMaterials
+        element: <TutorRoute><MyMaterials /></TutorRoute>
       },
       // student
       {
         path: 'myBookedSessions',
-        Component: MyBookedSessions
+        element: <StudentRoute><MyBookedSessions /></StudentRoute>
       },
       {
         path: 'createNotes',
-        element: <StudentNotesForm />,
+        element: <StudentRoute><StudentNotesForm /></StudentRoute>,
       },
       {
-    path: 'manageNotes',
-    element:<ManageNotes/>
+        path: 'manageNotes',
+        element: <StudentRoute><ManageNotes /></StudentRoute>
 
       }
     ]

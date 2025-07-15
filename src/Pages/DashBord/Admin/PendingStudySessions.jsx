@@ -96,8 +96,8 @@ const PendingStudySessions = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
-      <h2 className="text-3xl font-bold mb-8 text-center roboto text-[#e6504e]">⏳ Pending Study Sessions</h2>
+    <div className="max-w-7xl mx-auto px-8 py-8">
+      <h2 className="text-3xl font-bold mb-8 mt-10 text-center roboto text-[#e6504e]">⏳ Pending Study Sessions</h2>
 
       {sessions.length === 0 ? (
          <EmptyState

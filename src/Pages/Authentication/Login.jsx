@@ -5,7 +5,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import useAuth from '../../hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxios from '../../hooks/useAxios';
 
 const Login = () => {
   const { LogInUser, sighInWithGoogle, setUser } = useAuth();
@@ -13,7 +13,7 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location =useLocation();
-    const axiosSecure = useAxiosSecure(); 
+    const axiosInstance = useAxios(); 
 
   const onSubmit = data => {
     LogInUser(data.email, data.password)
@@ -44,7 +44,7 @@ const Login = () => {
         };
 
         try {
-          const res = await axiosSecure.post('/users', userInfo);
+          const res = await axiosInstance.post('/users', userInfo);
           console.log('Google user saved:', res.data);
         } catch (err) {
           console.error('Saving Google user failed:', err);
@@ -128,11 +128,11 @@ const Login = () => {
         </div>
 
         {/* Google Login */}
-        <div className="divider lg:w-96">Or authorize with</div>
+        <div className="divider lg:w-96 mx-auto">Or authorize with</div>
 
         <button
           onClick={handleGoogleLogin}
-          className="btn lg:w-96 shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 border-[#e5e5e5]"
+          className="btn lg:w-96 shadow-md mx-auto py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 border-[#e5e5e5]"
         >
           <svg
             className="w-6 h-6"

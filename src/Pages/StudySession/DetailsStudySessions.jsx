@@ -38,7 +38,7 @@ const DetailsStudySessions = () => {
   const isRegistrationClosed = (endDate) => new Date(endDate) < new Date();
 
   const calculateAverageRating = (reviews = []) => {
-    if (!reviews.length) return 0;
+    if (!reviews.length) return 4.5;
     const total = reviews.reduce((sum, r) => sum + (r.rating || 0), 0);
     return (total / reviews.length).toFixed(1);
   };

@@ -45,7 +45,7 @@ const CreateStudySession = () => {
   };
 
        return (
-              <div className="bg-[#fefefe] hover:bg-[#f9f9f9] shadow-lg rounded  px-14 pt-6 pb-8 w-full max-w-5xl mx-auto ">
+              <div className="bg-[#fefefe] hover:bg-[#f9f9f9] shadow-lg rounded  px-14 pt-14 pb-8 w-full max-w-5xl mx-auto ">
                      <h2 className="text-4xl text-[#422ad5] font-semibold roboto text-center mb-6">Add Study Session</h2>
                      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Session Title */}
@@ -116,7 +116,7 @@ const CreateStudySession = () => {
                                    <textarea {...register("description", { required: true })} className="textarea textarea-bordered input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" rows={4} placeholder="Describe the session in detail" />
                             </div>
 
-                            <div className="md:col-span-2">
+                            <div className="md:col-span-2 flex mx-auto">
                                   <CustomButton type='submit'>Submit Session</CustomButton>
                             </div>
                      </form>

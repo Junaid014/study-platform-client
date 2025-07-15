@@ -44,7 +44,7 @@ const ApprovedSessionsAdmin = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-4">
-      <h2 className="text-3xl font-bold mb-8 text-center roboto text-[#422ad5]">📚 Approved Study Sessions</h2>
+      <h2 className="text-3xl font-bold mb-8 mt-10 text-center roboto text-[#422ad5]">📚 Approved Study Sessions</h2>
 
       <div className="overflow-x-auto bg-white shadow-2xl rounded-xl border border-gray-200">
         <table className="min-w-full table">
