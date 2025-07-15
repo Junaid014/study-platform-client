@@ -107,7 +107,7 @@ const MyStudySessions = () => {
             <tr>
               <th>#</th>
               <th className="py-3 px-7 text-left">Title</th>
-              <th className="py-3 px-7 text-left">Duration</th>
+              <th className="py-3 px-7 md:flex hidden text-left">Duration</th>
               <th className="py-3 px-7 text-left">Fee</th>
               <th className="py-3 px-7 text-left">Status</th>
               <th className="py-3 px-7 text-center">Action</th>
@@ -118,19 +118,19 @@ const MyStudySessions = () => {
               <tr key={session._id} className="border-t hover:bg-gray-50 transition duration-150">
                 <td>{idx + 1}</td>
                 <td className="py-3 px-7 font-medium text-gray-800">{session.title}</td>
-                <td className="py-3 px-7">{session.duration}</td>
+                <td className="py-3 px-7 md:flex hidden">{session.duration}</td>
                 <td className="py-3 px-7">
                   <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
                     {session.fee === '0' ? 'Free' : `$${session.fee}`}
                   </span>
                 </td>
-                <td className="py-3 px-7">
+                <td className="py-3 flex gap-3 lg:gap-0 flex-col lg:flex-row md:px-7">
                   <button
                     className={`px-4 py-1 cursor-pointer rounded-full text-sm font-semibold shadow-md transition-all duration-200 relative group ${session.status === 'approved'
-                      ? 'bg-green-100 text-green-700 cursor-default'
-                      : session.status === 'pending'
-                        ? 'bg-yellow-100 text-yellow-800 cursor-default'
-                        : 'bg-red-100 text-red-700 hover:bg-red-200'
+                        ? 'bg-green-100 text-green-700 cursor-default'
+                        : session.status === 'pending'
+                          ? 'bg-yellow-100 text-yellow-800 cursor-default'
+                          : 'bg-red-100 text-red-700 hover:bg-red-200'
                       }`}
                     onClick={() => session.status === 'rejected' && handleResubmit(session._id)}
                     disabled={session.status !== 'rejected'}
@@ -142,7 +142,30 @@ const MyStudySessions = () => {
                       </span>
                     )}
                   </button>
+
+                  {/* 🔍 View Rejection Reason Button */}
+                  {session.status === 'rejected' && (session.rejectionReason || session.feedback) && (
+                    <button
+                      className="lg:ml-2 rounded-2xl  bg-blue-500 px-3 py-1 cursor-pointer underline text-white text-xs"
+                      onClick={() => {
+                        Swal.fire({
+                          title: 'Rejection Details',
+                          html: `
+            <div style="text-align: left">
+              <strong>Reason:</strong> ${session.rejectionReason || 'Not provided'}<br/><br/>
+              <strong>Feedback:</strong><br/>${session.feedback || 'Not provided'}
+            </div>
+          `,
+                          icon: 'info',
+                          confirmButtonText: 'Close'
+                        });
+                      }}
+                    >
+                      View Reason
+                    </button>
+                  )}
                 </td>
+
                 <td className="py-3 px-7 text-center">
                   {/* Modal Trigger (already in your table row) */}
                   {session.status === 'approved' && (
@@ -168,63 +191,63 @@ const MyStudySessions = () => {
 
         {mySessions.length === 0 && (
           <EmptyState
-    icon="book"
-    title="No Study Sessions Found"
-    message="You haven’t created any study sessions yet. Once you do, they’ll appear here."
-  />
+            icon="book"
+            title="No Study Sessions Found"
+            message="You haven’t created any study sessions yet. Once you do, they’ll appear here."
+          />
         )}
       </div>
 
-      
-     {/* Modal */}
-{selectedSession && (
-  <dialog id="upload_modal" className="modal">
-    <div className="modal-box">
-      <h2 className="text-xl font-semibold text-center roboto text-[#422ad5] mb-4">Upload Materials</h2>
-      <form onSubmit={handleUpload} className="space-y-4">
-        <input
-          type="text"
-          value={selectedSession?._id || ''}
-          readOnly
-          className="w-full bg-gray-100 text-sm p-2 rounded border"
-        />
-        <input
-          type="text"
-          value={user?.email}
-          readOnly
-          className="w-full bg-gray-100 text-sm p-2 rounded border"
-        />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setMaterial({ ...material, image: e.target.files[0] })}
-          className="w-full border rounded p-2 text-sm"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Google Drive Link"
-          value={material.link}
-          onChange={(e) => setMaterial({ ...material, link: e.target.value })}
-          className="w-full border rounded p-2 text-sm"
-          required
-        />
-        <CustomButton
-          type="submit"
-          disabled={uploading}
-          className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded"
-        >
-          {uploading ? 'Uploading...' : 'Submit'}
-        </CustomButton>
-      </form>
-    </div>
 
-    {/* Clicking outside the modal will close it */}
-    <form method="dialog" className="modal-backdrop">
-      <button></button>
-    </form>
-  </dialog>
-)}
+      {/* Modal */}
+      {selectedSession && (
+        <dialog id="upload_modal" className="modal">
+          <div className="modal-box">
+            <h2 className="text-xl font-semibold text-center roboto text-[#422ad5] mb-4">Upload Materials</h2>
+            <form onSubmit={handleUpload} className="space-y-4">
+              <input
+                type="text"
+                value={selectedSession?._id || ''}
+                readOnly
+                className="w-full bg-gray-100 text-sm p-2 rounded border"
+              />
+              <input
+                type="text"
+                value={user?.email}
+                readOnly
+                className="w-full bg-gray-100 text-sm p-2 rounded border"
+              />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setMaterial({ ...material, image: e.target.files[0] })}
+                className="w-full border rounded p-2 text-sm"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Google Drive Link"
+                value={material.link}
+                onChange={(e) => setMaterial({ ...material, link: e.target.value })}
+                className="w-full border rounded p-2 text-sm"
+                required
+              />
+              <CustomButton
+                type="submit"
+                disabled={uploading}
+                className="bg-green-600 hover:bg-green-700 text-white w-full py-2 rounded"
+              >
+                {uploading ? 'Uploading...' : 'Submit'}
+              </CustomButton>
+            </form>
+          </div>
+
+          {/* Clicking outside the modal will close it */}
+          <form method="dialog" className="modal-backdrop">
+            <button></button>
+          </form>
+        </dialog>
+      )}
 
     </div>
   );

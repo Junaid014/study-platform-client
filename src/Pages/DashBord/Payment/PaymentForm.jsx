@@ -61,7 +61,7 @@ const PaymentForm = ({ session }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-6 shadow-lg border border-gray-200 rounded bg-white">
+    <form onSubmit={handleSubmit} className="max-w-md mt-9 mx-auto p-6 shadow-lg border border-gray-200 rounded bg-white">
       <h2 className="text-xl font-semibold mb-4 text-center roboto text-[#422ad5]">Pay ${session.fee}</h2>
       <CardElement className="p-4 border rounded mb-4" />
       <CustomButton

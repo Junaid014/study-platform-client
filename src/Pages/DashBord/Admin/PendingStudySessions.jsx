@@ -69,31 +69,47 @@ const PendingStudySessions = () => {
   };
 
   const handleReject = async (session) => {
-    const confirm = await Swal.fire({
-      title: `Are you sure?`,
-      text: `You are about to reject this session.`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, reject it!',
+  const { value: formValues } = await Swal.fire({
+    title: 'Reject Session',
+    html:
+      '<input id="swal-reason" class="swal2-input" placeholder="Rejection Reason">' +
+      '<textarea id="swal-feedback" class="swal2-textarea" placeholder="Additional Feedback"></textarea>',
+    focusConfirm: false,
+    showCancelButton: true,
+    confirmButtonText: 'Submit Rejection',
+    preConfirm: () => {
+      const reason = document.getElementById('swal-reason').value.trim();
+      const feedback = document.getElementById('swal-feedback').value.trim();
+
+      if (!reason) {
+        Swal.showValidationMessage('Rejection reason is required');
+        return false;
+      }
+
+      return { reason, feedback };
+    }
+  });
+
+  if (!formValues) return;
+
+  try {
+    const res = await axiosSecure.patch(`/study-sessions/${session._id}`, {
+      status: 'rejected',
+      email: session.userEmail,
+      rejectionReason: formValues.reason,
+      feedback: formValues.feedback
     });
 
-    if (!confirm.isConfirmed) return;
-
-    try {
-      const res = await axiosSecure.patch(`/study-sessions/${session._id}`, {
-        status: 'rejected',
-        email: session.userEmail
-      });
-
-      if (res.data.success) {
-        Swal.fire('Rejected', `Session rejected successfully`, 'success');
-        refetch();
-      }
-    } catch (error) {
-      console.error(error);
-      Swal.fire('Error', 'Something went wrong', 'error');
+    if (res.data.success) {
+      Swal.fire('Rejected', `Session rejected successfully`, 'success');
+      refetch();
     }
-  };
+  } catch (error) {
+    console.error(error);
+    Swal.fire('Error', 'Something went wrong', 'error');
+  }
+};
+
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-8">
