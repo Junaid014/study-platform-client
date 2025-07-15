@@ -26,6 +26,7 @@ import BookedSessionDetailsWithReview from "../Pages/DashBord/Student/Review/Boo
 import BookedSessionMaterials from "../Pages/DashBord/Student/BookedSessionMaterials ";
 import StudentNotesForm from "../Pages/DashBord/Student/StudentNotesForm ";
 import ManageNotes from "../Pages/DashBord/Student/ManageNotes ";
+import ManageMaterials from "../Pages/DashBord/Admin/ManageMaterials";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ export const router = createBrowserRouter([
       {
         path: 'approvedSessionAdmin',
         element: <AdminRoute> <ApprovedSessionsAdmin /> </AdminRoute>
+      },
+      {
+        path:'manageMaterials',
+        element:<AdminRoute><ManageMaterials/></AdminRoute>
       },
       // tutor
       {

@@ -28,7 +28,7 @@ export const SupportCards = () => {
     const ref = useRef(null);
           const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <div className="pt-10 pb-32 px-4 max-w-7xl mx-auto">
+    <div className="pt-10 pb-20 px-4 max-w-7xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#422ad5] roboto">
         💡 How Can We Help You?
       </h2>
@@ -68,7 +68,7 @@ export const ContactDetails = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-b from-white to-blue-50 rounded-xl border  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
+      className="bg-gradient-to-b from-white mt-24 to-blue-50 rounded-xl border  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#422ad5] mb-6 roboto">
         💬 Get in Touch With Us
@@ -164,7 +164,7 @@ export const FeedbackForm = () => {
   };
 
   return (
-    <div className='bg-gradient-to-br mt-24 from-[#f7f9ff] via-[#f4f6ff] to-[#eef2ff] max-w-7xl mx-auto rounded-2xl'>
+    <div className='bg-gradient-to-br from-[#f7f9ff] via-[#f4f6ff] to-[#eef2ff] max-w-7xl mx-auto rounded-2xl'>
 <div className="max-w-4xl mx-auto px-4 py-10 mt-16 ">
       <h3 className="text-4xl font-bold  text-center text-[#422ad5] mb-8 flex justify-center items-center gap-2">
         <MdFeedback className="text-4xl mt-1" />

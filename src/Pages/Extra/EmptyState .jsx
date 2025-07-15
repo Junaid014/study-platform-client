@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { FaBook } from 'react-icons/fa6';
 import { FiFolder, FiInbox, FiFileText, FiBookOpen, FiCalendar } from 'react-icons/fi';
 
 const iconMap = {
@@ -8,6 +9,7 @@ const iconMap = {
   file: FiFileText,
   book: FiBookOpen,
   calendar: FiCalendar,
+  book2:FaBook
 };
 
 const EmptyState = ({ icon = 'folder', title = 'Nothing Found', message = 'There is no data to display.' }) => {

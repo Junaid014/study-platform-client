@@ -82,7 +82,7 @@ const MyMaterials = () => {
 
   return (
     <div className="max-w-7xl mx-auto lg:pl-10 pr-4 pl-4 py-8">
-      <h2 className="text-2xl font-bold text-center text-[#422ad5] mb-6">📂 My Uploaded Materials</h2>
+      <h2 className="text-4xl font-bold text-center text-[#422ad5] mb-6">📂 My Uploaded Materials</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {materials.map((mat) => (
           <div key={mat._id} className="border p-4 rounded-lg shadow hover:shadow-xl transition-all">

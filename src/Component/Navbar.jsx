@@ -170,19 +170,19 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex gap-3">
-                <Link
+                {/* <Link
                   to="/auth/login"
                   className="px-4 cursor-pointer font-medium py-2 border border-[#00a7ac] text-[#00a7ac] duration-300 ease-in-out hover:bg-gradient-to-r hover:from-[#00a7ac] hover:to-[#00cfc2] hover:text-white rounded-md transition"
                 >
-                  Login
-                </Link>
+                 
+                </Link> */}
 
-                {/* <Link
+                <Link
                   to="/auth/signUp"
                   className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9 transition duration-300"
                 >
-                  Sign Up
-                </Link> */}
+                  Get Started
+                </Link>
               </div>
             )}
           </div>

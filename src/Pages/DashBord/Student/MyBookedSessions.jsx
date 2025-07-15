@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Loading from '../../Extra/Loading';
 import { Link } from 'react-router';
+import EmptyState from '../../Extra/EmptyState ';
 
 
 const MyBookedSessions = () => {
@@ -25,7 +26,11 @@ const MyBookedSessions = () => {
       <h2 className="text-3xl font-bold text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
 
       {bookedSessions.length === 0 ? (
-        <div className="text-center text-gray-500">You haven't booked any sessions yet.</div>
+        <EmptyState
+            icon="book2"
+            title="No Booked Session"
+            message="You haven't booked any sessions yet.."
+          />
       ) : (
         <div className="grid md:grid-cols-2 gap-6 ">
           {bookedSessions.map((session) => (

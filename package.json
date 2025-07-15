@@ -26,7 +26,9 @@
     "react-icons": "^5.5.0",
     "react-intersection-observer": "^9.16.0",
     "react-router": "^7.6.3",
+    "react-slideshow-image": "^4.3.2",
     "react-toastify": "^11.0.5",
+    "react-type-animation": "^3.2.0",
     "sweetalert2": "^11.22.2",
     "tailwindcss": "^4.1.11"
   },
