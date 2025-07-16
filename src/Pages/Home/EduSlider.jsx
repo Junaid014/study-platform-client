@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { TypeAnimation } from "react-type-animation";
+import CustomButton from '../Extra/CustomButton'
 
 const EduSlider = () => {
   const slides = [
@@ -56,12 +57,14 @@ const EduSlider = () => {
                 </h2>
                 <p className="text-lg font-medium mb-2">📅 {slide.date}</p>
                 <p className="text-md mb-4">{slide.description}</p>
-                <Link
+                <CustomButton>
+                  <Link
                   to="/allStudySession"
-                  className="btn bg-gradient-to-r px-6 py-2 from-[#3d53eb] to-[#5d7cff] text-white rounded-lg shadow-md hover:from-[#2f42d2] hover:to-[#4d6eff] transition duration-300"
+                  className=""
                 >
                   {slide.cta}
                 </Link>
+                </CustomButton>
               </div>
             </div>
           </div>

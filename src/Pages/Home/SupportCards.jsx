@@ -68,13 +68,13 @@ export const ContactDetails = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="bg-gradient-to-b from-white mt-24 to-blue-50 rounded-xl border  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
+      className="bg-gradient-to-b from-white mt-24 to-blue-50 rounded-xl border mb-28  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
     >
       <h2 className="text-3xl md:text-4xl font-bold text-center text-[#422ad5] mb-6 roboto">
         💬 Get in Touch With Us
       </h2>
 
-      <div className="flex justify-between flex-col lg:flex-row gap-8 text-gray-800 text-base md:text-lg">
+      <div className="flex justify-between  flex-col lg:flex-row gap-8 text-gray-800 text-base md:text-lg">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <FaPhoneAlt className="text-[#e6504e]" />

@@ -9,7 +9,7 @@ import Navbar from '../../Component/Navbar';
 const DashboardLayout = () => {
 
        const { role, roleLoading } = useUserRole();
-       console.log(role);
+       
 
        return (
               <div className="drawer lg:drawer-open w-11/12 mx-auto mt-8.5">

@@ -2,7 +2,6 @@ import React, {  useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import btn_logo from "../assets/user.png";
-// import logo from "../assets/logo1.jpg";
 import useAuth from '../hooks/useAuth';
 import Loading from '../Pages/Extra/Loading';
 import { HiArrowLeftOnRectangle } from 'react-icons/hi2';

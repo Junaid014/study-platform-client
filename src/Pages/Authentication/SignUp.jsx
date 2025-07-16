@@ -206,11 +206,11 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="divider lg:w-96 mx-auto">Or authorize with</div>
+        <div className="divider w-96 mx-auto">Or authorize with</div>
 
         <button
           onClick={handleGoogleLogin}
-          className="btn lg:w-96 mx-auto shadow-md py-3 w-full bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 border-[#e5e5e5]"
+          className="btn w-96 mx-auto shadow-md py-3  bg-white text-base text-gray-800 hover:shadow-md hover:border-gray-400 flex gap-4 border-[#e5e5e5]"
         >
           <svg
             className="w-6 h-6"
