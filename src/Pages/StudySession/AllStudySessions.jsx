@@ -8,7 +8,7 @@ import Loading from '../Extra/Loading';
 const AllStudySessions = () => {
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
 
   const { data: allApprovedSessions = [], isLoading } = useQuery({
     queryKey: ['allApprovedSessions'],
@@ -73,7 +73,7 @@ const AllStudySessions = () => {
           <div><Loading /></div>
         ) : (
           <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto">
               {paginatedSessions.map((session, index) => (
                 <div
                   key={session._id}

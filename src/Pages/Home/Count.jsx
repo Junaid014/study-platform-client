@@ -34,7 +34,7 @@ const Count = () => {
        ];
 
        return (
-              <div className='max-w-7xl mx-auto mt-16 '>
+              <div className='w-11/12 mx-auto mt-16 '>
 
                      <div className="text-center mt-10 mb-8">
                             <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] mb-3 roboto">

@@ -49,14 +49,14 @@ const ApprovedStudySessions = () => {
 }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="w-11/12 mx-auto py-10">
       <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] text-center roboto mb-10">Available Study Sessions</h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {ongoingSessions.map((session, index) => (
           <div
             key={session._id}
-            className="border border-blue-200 rounded-xl bg-[#fefefe] hover:shadow-xl transition duration-300 p-5 flex flex-col justify-between fade-slide-up"
+            className="border border-blue-100 rounded-xl bg-[#ffffff] hover:shadow-xl transition duration-300 p-5 flex flex-col justify-between fade-slide-up"
             style={{ animationDelay: `${index * 400}ms` }}
           >
             <div>
