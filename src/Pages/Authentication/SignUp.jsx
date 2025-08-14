@@ -117,7 +117,7 @@ const SignUp = () => {
         />
       </div>
 
-      <div className="md:w-1/2 lg:mr-16 md:ml-24">
+      <div className="md:w-1/2 lg:mr-16 md:ml-24 pt-12">
         <div className="flex mt-4 justify-center items-center">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl pt-6 px-2">
             <h2 className="text-3xl font-semibold text-center">Register your Account</h2>

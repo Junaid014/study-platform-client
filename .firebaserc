@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "test-project-37d3b"
-  }
+    "default": "study-platform14"
+  },
+  "targets": {},
+  "etags": {}
 }

@@ -41,7 +41,7 @@ const Navbar = () => {
   };
 
   const links = (
-    <div className="flex text-[#0F0F0FB3] font-medium">
+    < >
      
       <li className=" text-sm font-semibold">
         <NavLink
@@ -93,7 +93,7 @@ const Navbar = () => {
       </li>
     
   
-    </div>
+    </>
   );
 
   return (
@@ -114,7 +114,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="flex flex-col gap-3 w-52 bg-[#FAF9F6]  dropdown-content rounded-box z-1 mt-3 p-2 shadow"
             >
               {links}
             </ul>
@@ -127,7 +127,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className=" flex gap-2 items-center">{links}</ul>
         </div>
 
         <div className='flex navbar-end gap-5'>
