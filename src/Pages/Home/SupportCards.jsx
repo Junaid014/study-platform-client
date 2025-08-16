@@ -6,52 +6,53 @@ import { motion, useInView } from "framer-motion";
 const supportData = [
   {
     icon: <FaQuestionCircle size={50} />,
-    title: 'Getting Started',
-    description: 'Explore how to create an account, find study sessions, and begin your learning journey.',
-    color: 'from-[#5f72be] to-[#9921e8]',
+    title: "Getting Started",
+    path: "/support/getting-started",
+    description:
+      "Explore how to create an account, find study sessions, and begin your learning journey.",
+    color: "from-[#5f72be] to-[#9921e8]",
   },
   {
     icon: <FaWallet size={50} />,
-    title: 'Fees & Payments',
-    description: 'Understand tutor fees, how payment works, and track your payment history securely.',
-    color: 'from-[#1cb5e0] to-[#000851]',
+    title: "Fees & Payments",
+    path: "/support/payments",
+    description:
+      "Understand tutor fees, how payment works, and track your payment history securely.",
+    color: "from-[#1cb5e0] to-[#000851]",
   },
   {
     icon: <FaShieldAlt size={50} />,
-    title: 'Safety & Privacy',
-    description: 'Learn how we protect your data and ensure secure interactions between tutors and students.',
-    color: 'from-[#6a11cb] to-[#2575fc]',
-  }
+    title: "Safety & Privacy",
+    path: "/support/privacy",
+    description:
+      "Learn how we protect your data and ensure secure interactions between tutors and students.",
+    color: "from-[#6a11cb] to-[#2575fc]",
+  },
 ];
 
 export const SupportCards = () => {
-    const ref = useRef(null);
-          const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <div className=" pb-14 w-11/12 mx-auto">
+    <div className="pb-14 w-11/12 mx-auto">
       <h2 className="text-xl md:text-3xl font-bold text-center mb-12 text-gray-700 roboto">
         💡 How Can We Help You?
       </h2>
 
       <div className="grid md:grid-cols-3 gap-10">
-        {supportData.map((card, index) => {
-        
-
-          return (
+        {supportData.map((card, index) => (
+          <Link key={card.title} to={card.path} aria-label={card.title} className="block">
             <motion.div
-              ref={ref}
-              key={index}
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.3, ease: 'easeOut' }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
               className={`rounded-xl p-8 text-white shadow-lg bg-gradient-to-br ${card.color} hover:scale-[1.03] transition-transform duration-300`}
             >
               <div className="mb-4 flex justify-center text-white">{card.icon}</div>
               <h3 className="md:text-2xl text-xl font-bold mb-2 text-center">{card.title}</h3>
               <p className="text-sm text-center leading-relaxed">{card.description}</p>
             </motion.div>
-          );
-        })}
+          </Link>
+        ))}
       </div>
     </div>
   );
@@ -122,6 +123,7 @@ import { MdEmail, MdOutlineSubject, MdPhone, MdFeedback } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
 import CustomButton from '../Extra/CustomButton';
+import { Link } from 'react-router';
 
 export const FeedbackForm = () => {
   const { user } = useAuth();

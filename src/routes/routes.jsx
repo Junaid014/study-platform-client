@@ -30,6 +30,9 @@ import ManageNotes from "../Pages/DashBord/Student/ManageNotes ";
 import ManageMaterials from "../Pages/DashBord/Admin/ManageMaterials";
 import StudentRoute from "../Provider/StudentRoute";
 import ErrorElement from "../Pages/Extra/ErrorElement";
+import GettingStarted from "../Component/SupportCard/GettingStarted";
+import Privacy from "../Component/SupportCard/Privacy";
+import Payments from "../Component/SupportCard/Payments";
 
 export const router = createBrowserRouter([
   {
@@ -75,7 +78,21 @@ export const router = createBrowserRouter([
       {
         path: 'payment/:id',
         Component: Payment
-      }
+      },
+      {
+        path:'/support/getting-started',
+        Component:GettingStarted
+      },
+      {
+        path:'/support/privacy',
+        Component:Privacy
+      },
+      {
+        path:'/support/payments',
+        Component:Payments
+      },
+      
+
 
     ]
   },
