@@ -138,15 +138,15 @@ const Navbar = () => {
         <div className='flex navbar-end gap-5'>
           <div>
             {user ? (
-              <div className=" flex gap-3 relative" ref={dropdownRef}>
+              <div className=" flex gap-1 md:gap-3 relative" ref={dropdownRef}>
                 <img
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="w-12 h-11 rounded-full cursor-pointer border border-gray-300"
+                  className="md:w-12 md:h-11 w-8 h-8 rounded-full cursor-pointer border border-gray-300"
                   src={user?.photoURL || btn_logo}
                   alt="user"
                 />
                 <button
-                  className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9] transition duration-300"
+                  className="md:px-5 px-2 py-1 md:py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9] transition duration-300"
                   onClick={handleSignOut}
                 >
                   SignOut
@@ -183,7 +183,7 @@ const Navbar = () => {
 
                 <Link
                   to="/auth/signUp"
-                  className="px-5 py-2.5 cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9 transition duration-300"
+                  className="md:px-5 px-2.5 py-1.5 md:py-2.5 md:text-base text-xs cursor-pointer bg-gradient-to-r from-[#00a7ac] to-[#00cfc3] text-white rounded-lg font-medium shadow-md hover:from-[#008f92] hover:to-[#00b5a9 transition duration-300"
                 >
                   Get Started
                 </Link>

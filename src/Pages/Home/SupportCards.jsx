@@ -29,7 +29,7 @@ export const SupportCards = () => {
           const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
     <div className=" pb-14 w-11/12 mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-700 roboto">
+      <h2 className="text-xl md:text-3xl font-bold text-center mb-12 text-gray-700 roboto">
         💡 How Can We Help You?
       </h2>
 
@@ -47,7 +47,7 @@ export const SupportCards = () => {
               className={`rounded-xl p-8 text-white shadow-lg bg-gradient-to-br ${card.color} hover:scale-[1.03] transition-transform duration-300`}
             >
               <div className="mb-4 flex justify-center text-white">{card.icon}</div>
-              <h3 className="text-2xl font-bold mb-2 text-center">{card.title}</h3>
+              <h3 className="md:text-2xl text-xl font-bold mb-2 text-center">{card.title}</h3>
               <p className="text-sm text-center leading-relaxed">{card.description}</p>
             </motion.div>
           );
@@ -70,7 +70,7 @@ export const ContactDetails = () => {
       transition={{ duration: 0.6 }}
       className="bg-gradient-to-b from-white mt-24 to-blue-50 rounded-xl border mb-28  transition-transform duration-300 hover:shadow-xl border-gray-200 shadow-lg max-w-4xl mx-auto px-6 py-10"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#422ad5] mb-6 roboto">
+      <h2 className="text-xl md:text-4xl font-bold text-center text-gray-700 mb-6 roboto">
         💬 Get in Touch With Us
       </h2>
 
@@ -166,8 +166,8 @@ export const FeedbackForm = () => {
   return (
     <div className='bg-white w-11/12 mx-auto rounded-2xl'>
 <div className="max-w-4xl mx-auto px-4 py-10 mt-16 ">
-      <h3 className="md:text-3xl text-2xl font-bold  text-center text-gray-700 mb-8 flex justify-center items-center gap-2">
-        <MdFeedback className="text-4xl text-primary mt-1" />
+      <h3 className="md:text-3xl text-xl font-bold  text-center text-gray-700 mb-8 flex justify-center items-center gap-2">
+        <MdFeedback className="md:text-4xl text-2xl text-primary mt-1" />
         <p className=''> Leave Us Your Feedback</p>
       </h3>
 
@@ -255,7 +255,7 @@ export const FeedbackForm = () => {
         <div className="md:col-span-2 text-center">
           <CustomButton
             type="submit"
-            className="btn bg-gradient-to-r from-[#3d53eb] to-[#5969f3] text-white px-8 py-2 hover:shadow-xl"
+            className="btn  text-white md:px-8 md:py-2 hover:shadow-xl"
           >
             Submit Feedback
           </CustomButton>

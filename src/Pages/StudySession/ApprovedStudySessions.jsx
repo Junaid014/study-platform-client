@@ -50,7 +50,7 @@ const ApprovedStudySessions = () => {
 
   return (
     <div className="w-11/12 mx-auto py-14">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-700 text-center roboto mb-10">Available Study Sessions</h2>
+      <h2 className="text-xl md:text-3xl font-bold text-gray-700 text-center roboto mb-10">Available Study Sessions</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {ongoingSessions.map((session, index) => (
@@ -65,7 +65,7 @@ const ApprovedStudySessions = () => {
                 alt={session.title}
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
-              <h3 className="text-xl text-start roboto font-semibold mb-1 text-gray-800">{session.title}</h3>
+              <h3 className="md:text-xl  text-start roboto font-semibold mb-1 text-gray-800">{session.title}</h3>
               <div className="flex items-center gap-2 mb-2 text-sm roboto text-gray-600 mt-2">
                 <FaCalendarAlt className="text-blue-500" />
                 Registration Ends: <span className='rounded-full   font-semibold underline text-blue-500'>{formatDate(session.registrationEnd)}</span>
@@ -86,7 +86,7 @@ const ApprovedStudySessions = () => {
 
         
       </div>
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center  mt-10">
         <CustomButton to="/allStudySession">
           Show All Available Sessions
         </CustomButton>

@@ -7,12 +7,12 @@ import { Link } from 'react-router';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 w-full text-white pt-10 pb-6 px-6">
-      <div className="w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+      <div className="w-11/12 mx-auto text-center grid md:grid-cols-4 sm:grid-cols-2 gap-8">
         {/* Logo & Description */}
         <div className="space-y-3 flex flex-col">
-          <Link to='/' className="flex gap-2 justify-center lg:justify-start items-center">
+          <Link to='/' className="flex gap-2 justify-center md:justify-start items-center">
                       <GiGraduateCap className="text-4xl text-primary" />
-                      <span className="text-2xl  text-primary font-extrabold">EduSync</span>
+                      <span className="md:text-2xl text-xl  text-primary font-extrabold">EduSync</span>
                     </Link>
           <p className="text-sm text-center lg:text-start text-blue-100 leading-relaxed">
             Empowering collaborative learning. Discover study sessions, connect with tutors, and level up your education with EduSync.
@@ -21,7 +21,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-semibold mb-3 text-lg text-white">Quick Links</h4>
+          <h4 className="font-semibold  mb-3 md:text-lg text-white">Quick Links</h4>
           <ul className="space-y-2 text-sm text-blue-100">
             <li><Link to="/allStudySession" className="hover:underline">Browse Sessions</Link></li>
             <li><Link to="/dashboard/myBookedSessions" className="hover:underline">My Bookings</Link></li>
@@ -32,7 +32,7 @@ const Footer = () => {
 
         {/* Resources */}
         <div>
-          <h4 className="font-semibold mb-3 text-lg text-white">Resources</h4>
+          <h4 className="font-semibold mb-3 md:text-lg text-white">Resources</h4>
           <ul className="space-y-2 text-sm text-blue-100">
             <li><Link to="/#" className="hover:underline">About Us</Link></li>
             <li><Link to="/#" className="hover:underline">Contact Support</Link></li>
@@ -43,8 +43,8 @@ const Footer = () => {
 
         {/* Social & Newsletter */}
         <div>
-          <h4 className="font-semibold text-lg mb-5 text-white">Connect with Us</h4>
-          <div className="flex gap-4 mb-4 cursor-pointer">
+          <h4 className="font-semibold md:text-lg mb-5 text-white">Connect with Us</h4>
+          <div className="flex mx-auto justify-center gap-4 mb-4  cursor-pointer">
 
                         <p className=' '>
                             <a href="https://x.com/"><SiFacebook className="text-white text-3xl" /></a>

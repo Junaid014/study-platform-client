@@ -37,7 +37,7 @@ const Count = () => {
               <div className='w-11/12 mx-auto  '>
 
                      <div className="text-center mt-10 mb-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-3 roboto">
+                            <h2 className="text-xl md:text-3xl font-bold text-gray-700 mb-3 roboto">
                                    Platform Achievements at a Glance
                             </h2>
                             <p className="text-gray-600 max-w-2xl mx-auto  roboto">
@@ -51,9 +51,9 @@ const Count = () => {
                                                  {item.icon}
                                           </div>
 
-                                          <div className="flex text-4xl items-center justify-center font-extrabold mt-2">
+                                          <div className="flex text-4xl  items-center justify-center font-extrabold mt-2">
                                                  {inView ? (
-                                                        <CountUp className='font-extrabold text-black text-7xl' end={item.count} duration={item.duration} start={0} />
+                                                        <CountUp className='font-extrabold text-black md:text-5xl lg:text-7xl' end={item.count} duration={item.duration} start={0} />
                                                  ) : (
                                                         0
                                                  )}
