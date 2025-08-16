@@ -34,17 +34,17 @@ const Count = () => {
        ];
 
        return (
-              <div className='w-11/12 mx-auto mt-16 '>
+              <div className='w-11/12 mx-auto  '>
 
                      <div className="text-center mt-10 mb-8">
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] mb-3 roboto">
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-3 roboto">
                                    Platform Achievements at a Glance
                             </h2>
                             <p className="text-gray-600 max-w-2xl mx-auto  roboto">
                                    We take pride in the growth of our study platform. Here’s a quick look at some of our key achievements that reflect the impact we're making in education.
                             </p>
                      </div>
-                     <div ref={ref} className='mb-24 border rounded-2xl bg-gradient-to-br from-[#f7f9ff] via-[#f4f6ff] to-[#eef2ff] border-[#b4bdb266]  grid md:grid-cols-4 grid-cols-1 lg:gap-10'>
+                     <div ref={ref} className='mb-24 border rounded-2xl bg-gradient-to-br from-[#eff1f5] via-[#f4f6ff] to-[#e9eeff] border-[#b4bdb266]  grid md:grid-cols-4 grid-cols-1 lg:gap-10'>
                             {stats.map((item, idx) => (
                                    <div key={idx} className='w-11/12 mx-auto p-10 text-center'>
                                           <div className="flex justify-center mb-3">
@@ -57,10 +57,10 @@ const Count = () => {
                                                  ) : (
                                                         0
                                                  )}
-                                                 <p className='text-[#422ad5] text-3xl font-bold'>+</p>
+                                                 <p className='text-primary text-3xl font-bold'>+</p>
                                           </div>
 
-                                          <h2 className='text-[#422ad5] text-lg roboto mt-4 font-semibold'>{item.label}</h2>
+                                          <h2 className='text-primary text-lg roboto mt-4 font-semibold'>{item.label}</h2>
                                    </div>
                             ))}
                      </div>

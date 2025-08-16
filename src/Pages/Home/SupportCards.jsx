@@ -28,8 +28,8 @@ export const SupportCards = () => {
     const ref = useRef(null);
           const isInView = useInView(ref, { once: true, margin: "-100px" });
   return (
-    <div className="pt-10 pb-20 w-11/12 mx-auto">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#422ad5] roboto">
+    <div className=" pb-14 w-11/12 mx-auto">
+      <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-700 roboto">
         💡 How Can We Help You?
       </h2>
 
@@ -166,8 +166,8 @@ export const FeedbackForm = () => {
   return (
     <div className='bg-white w-11/12 mx-auto rounded-2xl'>
 <div className="max-w-4xl mx-auto px-4 py-10 mt-16 ">
-      <h3 className="text-4xl font-bold  text-center text-[#422ad5] mb-8 flex justify-center items-center gap-2">
-        <MdFeedback className="text-4xl mt-1" />
+      <h3 className="md:text-3xl text-2xl font-bold  text-center text-gray-700 mb-8 flex justify-center items-center gap-2">
+        <MdFeedback className="text-4xl text-primary mt-1" />
         <p className=''> Leave Us Your Feedback</p>
       </h3>
 

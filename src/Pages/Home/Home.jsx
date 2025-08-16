@@ -9,11 +9,11 @@ const Home = () => {
               <div>
                      <EduSlider/>
                      <ApprovedStudySessions />
-                     <Count />
-                     <SupportCards />
+                     {/* <Count /> */}
+                     {/* <SupportCards /> */}
                      
-                     <FeedbackForm />
-                     <ContactDetails />
+                     {/* <FeedbackForm /> */}
+                     {/* <ContactDetails /> */}
               </div>
        );
 };

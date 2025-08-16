@@ -16,7 +16,7 @@ const ApprovedStudySessions = () => {
   const filtered = res.data
     .filter(session => new Date(session.registrationEnd) >= new Date())
     .sort((a, b) => new Date(a.registrationEnd) - new Date(b.registrationEnd))
-    .slice(0, 6); 
+    .slice(0, 8); 
     
 
   return filtered;
@@ -49,8 +49,8 @@ const ApprovedStudySessions = () => {
 }
 
   return (
-    <div className="w-11/12 mx-auto py-10">
-      <h2 className="text-3xl md:text-4xl font-bold text-[#422ad5] text-center roboto mb-10">Available Study Sessions</h2>
+    <div className="w-11/12 mx-auto py-14">
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-700 text-center roboto mb-10">Available Study Sessions</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {ongoingSessions.map((session, index) => (
@@ -70,10 +70,7 @@ const ApprovedStudySessions = () => {
                 <FaCalendarAlt className="text-blue-500" />
                 Registration Ends: <span className='rounded-full   font-semibold underline text-blue-500'>{formatDate(session.registrationEnd)}</span>
               </div>
-              <div className="flex items-center roboto gap-2 text-sm text-gray-600 mt-1">
-                <FaBook className="text-blue-500" />
-                Class Starts: <span className='font-semibold underline text-blue-500'>{formatDate(session.classStart)}</span>
-              </div>
+           
             </div>
 
             <div className="flex items-center justify-between mt-3">

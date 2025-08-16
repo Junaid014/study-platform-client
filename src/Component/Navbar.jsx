@@ -67,7 +67,10 @@ const Navbar = () => {
           All Study Sessions
         </NavLink>
       </li>
-      <li className=" text-sm font-semibold">
+      {
+        user && 
+        <>
+        <li className=" text-sm font-semibold">
         <NavLink
           to="/createSession"
           className={({ isActive }) =>
@@ -79,6 +82,8 @@ const Navbar = () => {
           Create Session
         </NavLink>
       </li>
+        </>
+      }
       <li className=" text-sm font-semibold">
         <NavLink
           to="/dashboard"
@@ -98,7 +103,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full bg-[#e4e6fe] fixed top-0 left-0 right-0 shadow-sm z-50">
-      <div className="navbar w-11/12 mx-auto ">
+      <div className="flex items-center justify-between min-h-16 w-11/12 mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -121,8 +126,8 @@ const Navbar = () => {
           </div>
 
           <Link to='/' className="flex gap-2 justify-center items-center">
-            <GiGraduateCap className="text-4xl text-primary" />
-            <span className="text-2xl  text-primary font-extrabold">EduSync</span>
+            <GiGraduateCap className="md:text-4xl text-lg text-primary" />
+            <span className="md:text-2xl text-base  text-primary font-extrabold">EduSync</span>
           </Link>
         </div>
 

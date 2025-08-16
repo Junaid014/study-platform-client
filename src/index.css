@@ -24,6 +24,10 @@
 }
 
 
+:root {
+  --color-primary: #f65d4e; /* Your primary color */
+}
+
 
 body{
        font-family: "Urbanist", sans-serif;
