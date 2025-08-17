@@ -110,7 +110,7 @@ const PendingStudySessions = () => {
 
   return (
     <div className="lg:max-w-7xl mx-auto lg:px-8 py-8">
-      <h2 className="md:text-3xl text-xl font-bold md:mb-8 mt-10 text-center roboto text-[#e6504e]">
+      <h2 className="md:text-3xl text-xl font-bold md:mb-8 mt-10 text-center roboto text-[#f65d4e]">
         ⏳ Pending Study Sessions
       </h2>
 

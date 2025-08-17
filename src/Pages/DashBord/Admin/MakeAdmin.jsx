@@ -43,7 +43,7 @@ const MakeAdmin = () => {
       }
     };
 
-    const delayDebounce = setTimeout(fetchUsers, 300);
+    const delayDebounce = setTimeout(fetchUsers, 300); // debounce
     return () => clearTimeout(delayDebounce);
   }, [searchTerm, axiosSecure]);
 
@@ -67,27 +67,27 @@ const MakeAdmin = () => {
   };
 
   const renderUser = (user) => (
-    <div key={user._id} className="border border-gray-200 rounded-lg px-1 py-2 md: p-4 flex justify-between items-center shadow-sm hover:shadow-md transition">
-      <div className="flex items-center md:gap-3">
-        <img src={user.image} alt={user.name} className="md:w-12 md:h-12 w-7 h-7 rounded-full mr-6 md:mr-8" />
-        <div className='navbar-start flex flex-col'>
-          <p className="md:font-semibold text-xs md:text-base">{user.name}</p>
-          <p className="md:text-sm md:roboto text-xs text-gray-600 ">{user.email}</p>
-          <p className="text-xs text-gray-500 capitalize">Role: {user.role || 'student'}</p>
+    <div key={user._id} className="border border-gray-200 rounded-lg px-2 py-2 md:px-4 md:py-4 flex flex-col md:flex-row justify-between items-start md:items-center shadow-sm hover:shadow-md transition">
+      <div className="flex items-start md:items-center gap-2 md:gap-4">
+        <img src={user.image} alt={user.name} className="w-10 h-10 md:w-12 md:h-12 rounded-full" />
+        <div className="flex flex-col">
+          <p className="font-medium md:text-base text-sm">{user.name}</p>
+          <p className="text-gray-600 text-xs md:text-sm">{user.email}</p>
+          <p className="text-gray-500 text-xs capitalize">Role: {user.role || 'student'}</p>
         </div>
       </div>
-      <div>
+      <div className="mt-2 md:mt-0 flex gap-2">
         {user.role !== 'admin' ? (
           <button
             onClick={() => updateRole(user._id, 'admin')}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-1 md:px-3 py-1 rounded-md flex items-center gap-1 text-xs md:text-sm"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-2 md:px-3 py-1 md:py-1.5 rounded-md flex items-center gap-1 text-xs md:text-sm"
           >
             <FaUserShield /> Make Admin
           </button>
         ) : (
           <button
             onClick={() => updateRole(user._id, 'student')}
-            className="bg-red-500 hover:bg-red-600 text-white px-1 md:px-3 py-1 rounded-md flex items-center gap-1 text-xs md:text-sm"
+            className="bg-red-500 hover:bg-red-600 text-white px-2 md:px-3 py-1 md:py-1.5 rounded-md flex items-center gap-1 text-xs md:text-sm"
           >
             <FaUserMinus /> Remove Admin
           </button>
@@ -97,11 +97,11 @@ const MakeAdmin = () => {
   );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <h2 className="md:text-3xl text-xl text-gray-700 mt-8 font-semibold roboto text-center mb-6">Manage Admins</h2>
+    <div className="max-w-4xl mx-auto px-4 py-6 md:py-10">
+      <h2 className="text-center text-[#f65d4e] font-semibold roboto text-xl md:text-3xl mt-6 mb-6">Manage Admins</h2>
 
       {/* Search Bar */}
-      {/* <div className="mb-6 relative w-full md:max-w-md mx-auto">
+      <div className="mb-6 relative w-full md:max-w-md mx-auto">
         <input
           type="text"
           placeholder="Search user by email..."
@@ -110,24 +110,24 @@ const MakeAdmin = () => {
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
-      </div> */}
+      </div>
 
       {/* Search Results */}
-      {searchTerm && (
-        <div className="space-y-4">
+      {searchTerm ? (
+        <div className="space-y-3 md:space-y-4">
           {searchResults.length > 0 ? (
             searchResults.map(renderUser)
           ) : (
-            <p className="text-center roboto text-2xl  text-gray-700">No users found</p>
+            <p className="text-center text-gray-700 text-sm md:text-base roboto">No users found</p>
           )}
         </div>
-      )}
-
-      {/* Recent Logins */}
-      {!searchTerm && (
+      ) : (
         <>
-          <h3 className="md:text-lg font-medium roboto mb-4 mt-10">Recently Logged-In Users</h3>
-          <div className="space-y-4">
+          {/* Recent Logins */}
+          <h3 className="text-gray-700 font-medium roboto text-sm md:text-lg mb-3 md:mb-4 mt-6 md:mt-10">
+            Recently Logged-In Users
+          </h3>
+          <div className="space-y-3 md:space-y-4">
             {recentUsers.map(renderUser)}
           </div>
         </>
