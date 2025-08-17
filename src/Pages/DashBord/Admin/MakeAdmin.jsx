@@ -67,12 +67,12 @@ const MakeAdmin = () => {
   };
 
   const renderUser = (user) => (
-    <div key={user._id} className="border border-gray-200 rounded-lg p-4 flex justify-between items-center shadow-sm hover:shadow-md transition">
-      <div className="flex items-center gap-3">
-        <img src={user.image} alt={user.name} className="w-12 h-12 rounded-full mr-8" />
+    <div key={user._id} className="border border-gray-200 rounded-lg px-1 py-2 md: p-4 flex justify-between items-center shadow-sm hover:shadow-md transition">
+      <div className="flex items-center md:gap-3">
+        <img src={user.image} alt={user.name} className="md:w-12 md:h-12 w-7 h-7 rounded-full mr-6 md:mr-8" />
         <div className='navbar-start flex flex-col'>
-          <p className="font-semibold">{user.name}</p>
-          <p className="text-sm roboto text-gray-600 ">{user.email}</p>
+          <p className="md:font-semibold text-xs md:text-base">{user.name}</p>
+          <p className="md:text-sm md:roboto text-xs text-gray-600 ">{user.email}</p>
           <p className="text-xs text-gray-500 capitalize">Role: {user.role || 'student'}</p>
         </div>
       </div>
@@ -80,14 +80,14 @@ const MakeAdmin = () => {
         {user.role !== 'admin' ? (
           <button
             onClick={() => updateRole(user._id, 'admin')}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md flex items-center gap-1 text-sm"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-1 md:px-3 py-1 rounded-md flex items-center gap-1 text-xs md:text-sm"
           >
             <FaUserShield /> Make Admin
           </button>
         ) : (
           <button
             onClick={() => updateRole(user._id, 'student')}
-            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md flex items-center gap-1 text-sm"
+            className="bg-red-500 hover:bg-red-600 text-white px-1 md:px-3 py-1 rounded-md flex items-center gap-1 text-xs md:text-sm"
           >
             <FaUserMinus /> Remove Admin
           </button>
@@ -98,10 +98,10 @@ const MakeAdmin = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
-      <h2 className="text-3xl mt-8 font-semibold roboto text-center mb-6">Manage Admins</h2>
+      <h2 className="md:text-3xl text-xl text-gray-700 mt-8 font-semibold roboto text-center mb-6">Manage Admins</h2>
 
       {/* Search Bar */}
-      <div className="mb-6 relative w-full max-w-md mx-auto">
+      {/* <div className="mb-6 relative w-full md:max-w-md mx-auto">
         <input
           type="text"
           placeholder="Search user by email..."
@@ -110,7 +110,7 @@ const MakeAdmin = () => {
           className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
-      </div>
+      </div> */}
 
       {/* Search Results */}
       {searchTerm && (
@@ -126,7 +126,7 @@ const MakeAdmin = () => {
       {/* Recent Logins */}
       {!searchTerm && (
         <>
-          <h3 className="text-lg font-medium roboto mb-4 mt-10">Recently Logged-In Users</h3>
+          <h3 className="md:text-lg font-medium roboto mb-4 mt-10">Recently Logged-In Users</h3>
           <div className="space-y-4">
             {recentUsers.map(renderUser)}
           </div>

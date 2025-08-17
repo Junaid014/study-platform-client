@@ -53,9 +53,9 @@ const ManageNotes = () => {
        if (isLoading) return <Loading />;
 
        return (
-              <div className="min-h-screen bg-gradient-to-b from-[#e0e7ff] mt-6 lg:mt-0 to-[#f5f5f5] px-10 ml-16 py-10">
+              <div className="min-h-screen bg-gradient-to-b from-[#e0e7ff] mt-6 lg:mt-0 to-[#f5f5f5] md:px-10 md:ml-16 py-10">
                      <div className="max-w-5xl mx-auto">
-                            <h2 className="text-3xl pt-8 font-bold text-[#422ad5] text-center mb-10">📝 Manage Your Personal Notes</h2>
+                            <h2 className="md:text-3xl text-xl pt-8 font-bold text-gray-700 text-center mb-10">📝 Manage Your Personal Notes</h2>
 
                             {notes.length === 0 && (
                                    <EmptyState

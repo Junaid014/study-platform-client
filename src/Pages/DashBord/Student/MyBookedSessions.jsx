@@ -37,8 +37,8 @@ const MyBookedSessions = () => {
   };
 
   return (
-    <div className="max-w-5xl px-10 lg:pl-20 py-10">
-      <h2 className="text-3xl font-bold mt-5 text-center text-[#422ad5] mb-6">📚 My Booked Sessions</h2>
+    <div className="max-w-5xl md:px-10 lg:pl-20 py-10">
+      <h2 className="md:text-3xl text-xl font-bold mt-5 text-center text-gray-700 mb-6">📚 My Booked Sessions</h2>
 
       {bookedSessions.length === 0 ? (
         <EmptyState
@@ -59,7 +59,7 @@ const MyBookedSessions = () => {
                   alt={session.title}
                   className="w-full h-52 object-cover rounded mb-3"
                 />
-                <h3 className="text-lg font-semibold roboto">Title: {session.title}</h3>
+                <h3 className="md:text-lg font-semibold roboto">Title: {session.title}</h3>
                 <p className="text-gray-700 mb-1">Tutor: {session.tutorName}</p>
                 <p className="text-sm text-gray-700 mb-1">Duration: {session.duration}</p>
                 <p className="text-sm text-gray-700 mb-1">
