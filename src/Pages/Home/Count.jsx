@@ -57,10 +57,10 @@ const Count = () => {
                                                  ) : (
                                                         0
                                                  )}
-                                                 <p className='text-primary text-3xl font-bold'>+</p>
+                                                 <p className=' text-3xl font-bold'>+</p>
                                           </div>
 
-                                          <h2 className='text-primary text-lg roboto mt-4 font-semibold'>{item.label}</h2>
+                                          <h2 className='text-lg roboto mt-4 font-semibold'>{item.label}</h2>
                                    </div>
                             ))}
                      </div>

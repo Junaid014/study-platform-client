@@ -67,7 +67,7 @@ const AllStudySessions = () => {
       `}</style>
 
       <div className="min-h-screen py-10 px-4 mb-10">
-        <h2 className="text-4xl text-[#422ad5] font-semibold text-center roboto mb-10">All Available Study Sessions</h2>
+        <h2 className="md:text-3xl text-xl text-gray-700 font-semibold text-center roboto mb-10">All Available Study Sessions</h2>
 
         {isLoading ? (
           <div><Loading /></div>
