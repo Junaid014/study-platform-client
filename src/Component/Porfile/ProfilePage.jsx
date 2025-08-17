@@ -15,7 +15,6 @@ const ProfileCard = () => {
   const [saving, setSaving] = useState(false);
   const numberInputRef = useRef(null);
 
-  // Fetch: সব ইউজার এনে লগইন ইউজারকে match করা (তোমার instruction অনুযায়ী)
   useEffect(() => {
     const load = async () => {
       if (!user?.email) return;
@@ -45,7 +44,7 @@ const ProfileCard = () => {
       last_log_in: profile?.last_log_in || "",
     });
     setIsEditing(true);
-    // number ফোকাস দরকার হলে
+  
     setTimeout(() => {
       if (focusNumber && numberInputRef.current) numberInputRef.current.focus();
     }, 0);
@@ -65,14 +64,14 @@ const ProfileCard = () => {
   if (!draft?.email) return;
   setSaving(true);
   try {
-    // ✅ Change from PUT to PATCH
+    
     await axios.patch(`/users/${draft.email}`, {
       name: draft.name,
       number: draft.number,
       image: draft.image,
     });
 
-    // লোকাল স্টেট আপডেট
+    
     setProfile((p) => ({
       ...p,
       name: draft.name,
@@ -242,7 +241,7 @@ const ProfileCard = () => {
         </div>
       </div>
 
-      {/* নিচে চাইলে পরে অন্য কার্ড/স্ট্যাট যোগ করবে */}
+      
     </div>
   );
 };
