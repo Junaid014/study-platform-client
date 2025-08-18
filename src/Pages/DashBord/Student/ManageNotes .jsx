@@ -64,7 +64,7 @@ const ManageNotes = () => {
                                           message="You haven’t uploaded any notes yet."
                                    />
                             )}
-                            <div className="grid md:grid-cols-2 gap-8">
+                            <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 px-3 md:px-6">
                                    {notes.map((note) => (
                                           <div
                                                  key={note._id}

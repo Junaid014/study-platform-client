@@ -46,65 +46,65 @@ const CreateStudySession = () => {
 
        return (
               <div className="bg-[#fefefe] mb-18 hover:bg-[#f9f9f9] shadow-lg rounded  px-14 pt-14 pb-8 w-full max-w-5xl mx-auto ">
-                     <h2 className="text-4xl text-[#422ad5] font-semibold roboto text-center mb-6">Add Study Session</h2>
+                     <h2 className="text-xl md:text-3xl text-gray-700 font-semibold roboto text-center mb-6">Add Study Session</h2>
                      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Session Title */}
                             <div>
-                                   <label className="label font-medium  mr-94">Session Title</label>
+                                   <label className="label font-medium  lg:mr-94">Session Title</label>
                                    <input {...register("title", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" placeholder="Session Title" />
                             </div>
 
                             {/* Tutor Name */}
                             <div>
-                                   <label className="label font-medium mr-96">Tutor Name</label>
+                                   <label className="label font-medium lg:mr-96">Tutor Name</label>
                                    <input value={user?.displayName} readOnly className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full bg-gray-100" {...register("tutorName")} />
                             </div>
 
                             {/* Tutor Email */}
                             <div>
-                                   <label className="label font-medium mr-96">Tutor Email</label>
+                                   <label className="label font-medium lg:mr-96">Tutor Email</label>
                                    <input value={user?.email} readOnly className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full bg-gray-100" {...register("tutorEmail")} />
                             </div>
 
                             {/* Image URL */}
                             <div>
-                                   <label className="label font-medium mr-97">Image URL</label>
+                                   <label className="label font-medium lg:mr-97">Image URL</label>
                                    <input {...register("image", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" placeholder="Image URL" />
                             </div>
 
                             {/* Registration Start Date */}
                             <div>
-                                   <label className="label font-medium mr-94">Registration Start Date</label>
+                                   <label className="label font-medium lg:mr-94">Registration Start Date</label>
                                    <input type="date" {...register("registrationStart", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" />
                             </div>
 
                             {/* Registration End Date */}
                             <div>
-                                   <label className="label font-medium mr-94">Registration End Date</label>
+                                   <label className="label font-medium lg:mr-94">Registration End Date</label>
                                    <input type="date" {...register("registrationEnd", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 input-bordered bg-gray-100 w-full" />
                             </div>
 
                             {/* Class Start Date */}
                             <div>
-                                   <label className="label font-medium mr-94">Class Start Date</label>
+                                   <label className="label font-medium lg:mr-94">Class Start Date</label>
                                    <input type="date" {...register("classStart", { required: true })} className=" input focus:outline-none focus:ring-0 focus:border-gray-600 w-full input-bordered bg-gray-100 " />
                             </div>
 
                             {/* Class End Date */}
                             <div>
-                                   <label className="label font-medium mr-94">Class End Date</label>
+                                   <label className="label font-medium lg:mr-94">Class End Date</label>
                                    <input type="date" {...register("classEnd", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" />
                             </div>
 
                             {/* Duration */}
                             <div>
-                                   <label className="label font-medium mr-94">Session Duration</label>
+                                   <label className="label font-medium lg:mr-94">Session Duration</label>
                                    <input {...register("duration", { required: true })} className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" placeholder="e.g. 4 Weeks" />
                             </div>
 
                             {/* Fee */}
                             <div>
-                                   <label className="label font-medium mr-94">Registration Fee</label>
+                                   <label className="label font-medium lg:mr-94">Registration Fee</label>
                                    <input type="number" value={0} readOnly className="input focus:outline-none focus:ring-0 focus:border-gray-600 w-full bg-gray-100" {...register("fee")} />
                             </div>
 
@@ -112,7 +112,7 @@ const CreateStudySession = () => {
 
                             {/* Description - full width */}
                             <div className="md:col-span-2">
-                                   <label className="label font-medium mr-[766px]">Session Description</label>
+                                   <label className="label font-medium lg:mr-[766px]">Session Description</label>
                                    <textarea {...register("description", { required: true })} className="textarea textarea-bordered input focus:outline-none focus:ring-0 focus:border-gray-600 w-full" rows={4} placeholder="Describe the session in detail" />
                             </div>
 
