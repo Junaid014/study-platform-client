@@ -48,8 +48,8 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#422ad5] underline'
-              : 'text-[#1E293B] hover:text-[#2563EB] hover:underline'
+              ? 'text-[#f65d4e] underline'
+              : 'text-[#1E293B] hover:text-[#f65d4e] hover:underline'
           }
         >
           Home
@@ -60,13 +60,30 @@ const Navbar = () => {
           to="/allStudySession"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#422ad5] underline'
-              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
+              ? 'text-[#f65d4e] underline'
+              : 'text-[#1E293B] hover:text-[#f65d4e] hover:underline'
           }
         >
           All Study Sessions
         </NavLink>
       </li>
+
+   <li className=" text-sm font-semibold">
+  <a
+    href="#aboutUs"
+    className="text-[#1E293B] hover:text-[#f65d4e] hover:underline"
+    onClick={(e) => {
+      e.preventDefault();
+      const section = document.querySelector('#aboutUs');
+      section?.scrollIntoView({ behavior: 'smooth' });
+    }}
+  >
+    About Us
+  </a>
+</li>
+
+
+
       {
         user && 
         <>
@@ -75,27 +92,29 @@ const Navbar = () => {
           to="/createSession"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#422ad5] underline'
-              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
+              ? 'text-[#f65d4e] underline'
+              : 'text-[#1E293B] hover:text-[#f65d4e] hover:underline'
           }
         >
           Create Session
         </NavLink>
       </li>
-        </>
-      }
+
       <li className=" text-sm font-semibold">
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
             isActive
-              ? 'text-[#422ad5] underline'
-              : 'text-[#1E293B] hover:text-[#422ad5] hover:underline'
+              ? 'text-[#f65d4e] underline'
+              : 'text-[#1E293B] hover:text-[#f65d4e] hover:underline'
           }
         >
           DashBoard
         </NavLink>
       </li>
+        </>
+      }
+      
     
   
     </>
