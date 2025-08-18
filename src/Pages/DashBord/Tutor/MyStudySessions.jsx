@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -8,7 +7,6 @@ import Loading from '../../Extra/Loading';
 import CustomButton from '../../Extra/CustomButton';
 import { FiUploadCloud } from 'react-icons/fi';
 import EmptyState from '../../Extra/EmptyState ';
-
 
 const MyStudySessions = () => {
   const axiosSecure = useAxiosSecure();
@@ -99,7 +97,7 @@ const MyStudySessions = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-4">
-      <h2 className="text-3xl mt-10 font-bold mb-8 text-center roboto text-[#422ad5]">📘 My Study Sessions</h2>
+      <h2 className="text-xl md:text-3xl mt-10 font-bold mb-8 text-center roboto text-gray-700">📘 My Study Sessions</h2>
 
       <div className="overflow-x-auto bg-white shadow-2xl rounded-xl border border-gray-200">
         <table className="min-w-full table">
@@ -107,67 +105,83 @@ const MyStudySessions = () => {
             <tr>
               <th>#</th>
               <th className="py-3 px-7 text-left">Title</th>
-              <th className="py-3 px-7 md:flex hidden text-left">Duration</th>
-              <th className="py-3 px-7 text-left">Fee</th>
-              <th className="py-3 px-7 text-left">Status</th>
-              <th className="py-3 px-7 text-center">Action</th>
+              <th className="py-3 px-7 hidden md:table-cell text-left">Duration</th>
+              <th className="py-3 px-7 text-left hidden sm:table-cell">Fee</th>
+              <th className="py-3 px-7 text-left hidden sm:table-cell">Status</th>
+              <th className="py-3 px-7 text-center hidden sm:table-cell">Action</th>
             </tr>
           </thead>
           <tbody>
             {mySessions.map((session, idx) => (
               <tr key={session._id} className="border-t hover:bg-gray-50 transition duration-150">
                 <td>{idx + 1}</td>
-                <td className="py-3 px-7 font-medium text-gray-800">{session.title}</td>
-                <td className="py-3 px-7 md:flex hidden">{session.duration}</td>
-                <td className="py-3 px-7">
+
+                {/* Title + Fee (on small screen fee নিচে চলে আসবে) */}
+                <td className="py-3 md:px-7 md:text-base text-xs md:font-medium text-gray-800">
+                  <div>{session.title}</div>
+                  <div className="sm:hidden mt-1 text-sm text-gray-600">
+                    <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                      {session.fee === '0' ? 'Free' : `$${session.fee}`}
+                    </span>
+                  </div>
+                </td>
+
+                {/* Duration (hidden on small) */}
+                <td className="py-3 px-7 hidden md:table-cell">{session.duration}</td>
+
+                {/* Fee (hidden on small, visible on sm+) */}
+                <td className="py-3 px-7 hidden sm:table-cell">
                   <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
                     {session.fee === '0' ? 'Free' : `$${session.fee}`}
                   </span>
                 </td>
-                <td className="py-3 flex gap-3 lg:gap-0 flex-col lg:flex-row md:px-7">
-                  <button
-                    className={`px-4 py-1 cursor-pointer rounded-full text-sm font-semibold shadow-md transition-all duration-200 relative group ${session.status === 'approved'
-                        ? 'bg-green-100 text-green-700 cursor-default'
-                        : session.status === 'pending'
-                          ? 'bg-yellow-100 text-yellow-800 cursor-default'
-                          : 'bg-red-100 text-red-700 hover:bg-red-200'
-                      }`}
-                    onClick={() => session.status === 'rejected' && handleResubmit(session._id)}
-                    disabled={session.status !== 'rejected'}
-                  >
-                    {session.status.charAt(0).toUpperCase() + session.status.slice(1)}
-                    {session.status === 'rejected' && (
-                      <span className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-max px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        Click to resubmit for approval
-                      </span>
-                    )}
-                  </button>
 
-                  {/* 🔍 View Rejection Reason Button */}
-                  {session.status === 'rejected' && (session.rejectionReason || session.feedback) && (
+                {/* Status */}
+                <td className="py-3 md:px-7">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
                     <button
-                      className="lg:ml-2 rounded-2xl  bg-blue-500 px-3 py-1 cursor-pointer underline text-white text-xs"
-                      onClick={() => {
-                        Swal.fire({
-                          title: 'Rejection Details',
-                          html: `
-            <div style="text-align: left">
-              <strong>Reason:</strong> ${session.rejectionReason || 'Not provided'}<br/><br/>
-              <strong>Feedback:</strong><br/>${session.feedback || 'Not provided'}
-            </div>
-          `,
-                          icon: 'info',
-                          confirmButtonText: 'Close'
-                        });
-                      }}
+                      className={`md:px-4 px-1 py-1 text-xs rounded-full md:text-sm md:font-semibold shadow-md transition-all duration-200 relative group ${session.status === 'approved'
+                          ? 'bg-green-100 text-xs text-green-700 cursor-default'
+                          : session.status === 'pending'
+                            ? 'bg-yellow-100 text-yellow-800 cursor-default'
+                            : 'bg-red-100 text-red-700 hover:bg-red-200'
+                        }`}
+                      onClick={() => session.status === 'rejected' && handleResubmit(session._id)}
+                      disabled={session.status !== 'rejected'}
                     >
-                      View Reason
+                      {session.status.charAt(0).toUpperCase() + session.status.slice(1)}
+                      {session.status === 'rejected' && (
+                        <span className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-max px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                          Click to resubmit for approval
+                        </span>
+                      )}
                     </button>
-                  )}
+
+                    {session.status === 'rejected' && (session.rejectionReason || session.feedback) && (
+                      <button
+                        className="sm:ml-2 rounded-2xl bg-blue-500 px-3 py-1 cursor-pointer underline text-white text-xs"
+                        onClick={() => {
+                          Swal.fire({
+                            title: 'Rejection Details',
+                            html: `
+                              <div style="text-align: left">
+                                <strong>Reason:</strong> ${session.rejectionReason || 'Not provided'}<br/><br/>
+                                <strong>Feedback:</strong><br/>${session.feedback || 'Not provided'}
+                              </div>
+                            `,
+                            icon: 'info',
+                            confirmButtonText: 'Close'
+                          });
+                        }}
+                      >
+                        View Reason
+                      </button>
+                    )}
+                  </div>
                 </td>
 
-                <td className="py-3 px-7 text-center">
-                  {/* Modal Trigger (already in your table row) */}
+                {/* Action */}
+                <td className="py-3 md:px-7 text-center">
                   {session.status === 'approved' && (
                     <button
                       onClick={() => {
@@ -175,14 +189,12 @@ const MyStudySessions = () => {
                         setMaterial({ image: '', link: '' });
                         document.getElementById('upload_modal')?.showModal();
                       }}
-                      className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-3 py-1 rounded text-sm flex items-center gap-2"
+                      className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white px-1 md:px-3 py-1 rounded md:text-sm text-xs flex items-center justify-center gap-1 md:gap-2 w-full sm:w-auto"
                     >
-                      <FiUploadCloud className="text-lg" />
+                      <FiUploadCloud className="md:text-lg text-xs" />
                       Upload
                     </button>
-
                   )}
-
                 </td>
               </tr>
             ))}
@@ -197,7 +209,6 @@ const MyStudySessions = () => {
           />
         )}
       </div>
-
 
       {/* Modal */}
       {selectedSession && (
@@ -242,7 +253,6 @@ const MyStudySessions = () => {
             </form>
           </div>
 
-          {/* Clicking outside the modal will close it */}
           <form method="dialog" className="modal-backdrop">
             <button></button>
           </form>
